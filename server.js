@@ -16,15 +16,15 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Handles handlebar files
-app.engine("handlebars", hBars({defaultLayout: "main"}));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", hBars({defaultLayout: "main"}));
+// app.set("view engine", "handlebars");
 
 // Static directory
 app.use(express.static("public"));
 
 // Routes
 // =============================================================
-//require("./routes/api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

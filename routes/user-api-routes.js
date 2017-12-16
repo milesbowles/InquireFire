@@ -1,9 +1,10 @@
 var express = require("express");
 var hBars = require("express-handlebars");
+var path = require("path");
 var db = require("../models");
 module.exports = function(app){
     /** Upon navigation to the home-page */
-    app.get("/", function(req, res){
+    app.get("/home", function(req, res){
         /** Handle multiplayer stats */
         db.UserStats.findAll(
             {limit: 5},
@@ -19,7 +20,10 @@ module.exports = function(app){
             res.json(dbUserStats);
         });
     });
-    app.put("/login", function(req, res){
+    app.get("/", function(req, res){
+        res.sendFile(path.join(__dirname, "../public/login.html"));
+    });
+    app.put("/", function(req, res){
         db.UserAuth.update({
             loggedIn: true
         }, {
@@ -27,7 +31,7 @@ module.exports = function(app){
                 username: req.body.username
             }
         }).then(function(dbUserAuth){
-            
+            res.json(dbUserAuth);
         });
     });
     app.get("/api/users", function(req, res){
