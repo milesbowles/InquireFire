@@ -1,4 +1,5 @@
 var express = require("express");
+var hBars = require("express-handlebars");
 var bodyParser = require("body-parser");
 
 // Sets up the Express App
@@ -13,6 +14,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+// Handles handlebar files
+app.engine("handlebars", hBars({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 // Static directory
 app.use(express.static("public"));
