@@ -4,6 +4,9 @@ var path = require("path");
 var db = require("../models");
 module.exports = function(app){
     /** Upon navigation to the home-page */
+    app.get("/", function(req, res){
+        res.sendFile(path.join(__dirname, "../public/login.html"));
+    });
     app.get("/home", function(req, res){
         /** Handle multiplayer stats */
         db.UserStats.findAll(
@@ -20,10 +23,18 @@ module.exports = function(app){
             res.json(dbUserStats);
         });
     });
-    app.get("/", function(req, res){
-        res.sendFile(path.join(__dirname, "../public/login.html"));
+    app.put("/home", function(req, res){
+        db.UserAuth.update({
+            loggedIn: true
+        }, {
+            where: {
+                username: req.body.username
+            }
+        }).then(function(dbUserAuth){
+            res.json(dbUserAuth);
+        });
     });
-    app.put("/", function(req, res){
+    app.put("/home", function(req, res){
         db.UserAuth.update({
             loggedIn: true
         }, {
