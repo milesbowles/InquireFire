@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battle</title>
+
+    <!-- Bootstrap File -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!--JS-->
+    <script src="./js/battle.js"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="./css/battle.css">
+
+
+<!-- Overall Bootstrap Grid -->
+<div  id="mainView" class="container-fluid">
+
+    <div  id="gameView" class="well well-lg">
+
+        <!--game view-->
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-2 pull-left">
+                    <div id="player-hp-bar">
+                        <h3>Player</h3>
+                        <div class="progress">
+                            <div id="player-hit-points" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                50
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 pull-right">
+                    <div id="enemy-hp-bar">
+                        <h3>Enemy</h3>
+                        <div class="progress">
+                            <div id="enemy-hit-points" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                50
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+
+
+            <div class="row">
+                <div id="header-label">
+                    <h1 id="header-label-text">FIGHT!</h1>
+                    <div id="gameOver">
+                        <h2>
+                            <span  class="label label-warning glyphicon glyphicon-usd coins">
+                                100
+                            </span>
+                        </h2>
+                        <br>
+                        <a href="index.html">
+                            <button class="btn btn-primary btn-lg result">OK</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <!-- Player  -->
+                <div id="player" class="col-md-1 pull-left">
+                    <img id="player-img" src='Assets/media/player/cannon/cannon-stationary.gif'>
+
+                    <div id="controlView">
+                        <!--<button class="btn btn-primary btn-lg left-button"><span class="glyphicon glyphicon-circle-arrow-left"></span></button>-->
+                        <!--<button class="btn btn-primary btn-lg right-button"><span class="glyphicon glyphicon-circle-arrow-right"></span></button>-->
+                        <!--<button id="attack-btn" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-screenshot"></span></button>-->
+                    </div>
+                </div>
+
+                <!-- Enemy  -->
+                <div id="enemy" class="col-md-1 pull-right">
+                    <img id="enemy-img" src="Assets/media/enemy/enemy-ufo-stationary.gif">
+                    <!--<audio id="lazer-sfx" src="Assets/media/sound-effects/lazer.wav" type="audio/wav"></audio>-->
+                </div>
+            </div>
+
+            <br><br><br>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>

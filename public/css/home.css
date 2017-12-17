@@ -1,0 +1,58 @@
+div.thumbnail {
+    background-color: rgba(200, 200, 200, 0.3);
+    border-color: transparent;
+}
+
+div.thumbnail:hover {
+    /*border-color: white;*/
+    box-shadow: 0px 0px 50px white;
+}
+
+h4 {
+    text-align: center;
+    color: white;
+}
+
+h3 {
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+h1 {
+    margin-left: 60%;
+    color: white;
+    text-align: center;
+}
+
+span.label {
+    margin: 1%;
+}
+
+#about {
+    zoom: 90%;
+    padding-top: 3%;
+    /* height: 20%; */
+    /* background-image: url("../media/background/city-bg.png"); */
+    background-size: cover;
+    background-position: top;
+}
+
+#categories {
+    zoom: 90%;
+    padding-top:2%;
+    padding-bottom: 20%;
+    height: 50%; 
+    background-color: rgba(13, 13, 20, 0.8);
+
+}
+
+.panel-transparent {
+    background-color: rgba(61, 61, 61, 0.8);
+    padding-left: 35%;
+    padding-right: 5%;
+    margin-bottom: 5%;
+}
