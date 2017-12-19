@@ -6,71 +6,68 @@
 }
 
 body {
-    /*padding-bottom: 50%;*/
-    /*background-color: rgba(13, 13, 20, 0.8)*/
-    padding: 3%;
-    background-image: url('Assets/media/background/city-bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    zoom: 60%;
+    background-color: #b7f7ff;
+    
+}
+#mainView {
+    padding: 5% 10% 0% 10%;
 }
 
 #gameView {
-    padding-top: 2%;
-    padding-bottom: 10%;
-    padding-left: 6%;
-    padding-right: 6%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
     background-color: rgba(200, 200, 200, 0.8);
-
 }
 
-#controlView {
-    /*margin-bottom: 25%;*/
-    padding-left: 20%;
-    width: 500px;
+#quizView {
+    margin-bottom: 10%;
+}
+
+#battleView {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+#scoreView {
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(200, 200, 200, 0.8);
 }
 
 #player {
-    width: 300px;
-    margin-left: 5%;
+    height: 150px;
+    width: auto;
+    align-self: flex-start;
+}
+
+#attack {
+    height: 150px;
+    width: auto;
+    align-self: flex-end;
 }
 
 #enemy {
-    /*margin-left: 40%;*/
-    margin-right: 15%;
-    width: 300px;
+    height: 150px;
+    width: auto;
+    align-self: flex-end;
 }
 
 #player-hp-bar {
-    /*margin-left: 10%;*/
-    position:absolute;
-    top:0;
-    /*right:-80px;*/
-    padding-top: 10%;
     width: 360px;
 }
 
-#player-img {
-    margin-top: 100px;
-}
-
-#enemy-img {
-    margin-top: 40%;
-    height: 170%;
-    width: 170%;
-}
-
 #enemy-hp-bar {
-    position:absolute;
-    top:0;
-    /*right: 100px;*/
-    padding-top: 10%;
     width: 365px;
 }
 
-#attack-btn {
-    /*margin-bottom: 20%;*/
-}
 
 button {
     width: 96px;
