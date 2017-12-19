@@ -18,6 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       categorySingle: {
           type: DataTypes.STRING
       }
-    });
+    },
+    {
+      timestamps: false
+    }
+    );
     return Stats;
   };
