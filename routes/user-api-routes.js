@@ -4,6 +4,9 @@ var path = require("path");
 var db = require("../models");
 module.exports = function(app){
     /** Upon navigation to the home-page */
+    app.get("/", function(req, res){
+        res.sendFile(path.join(__dirname, "../public/login.html"));
+    });
     app.get("/home", function(req, res){
         /** Handle multiplayer stats */
         db.UserStats.findAll(
@@ -19,9 +22,6 @@ module.exports = function(app){
         ).then(function(dbUserStats){
             res.json(dbUserStats);
         });
-    });
-    app.get("/", function(req, res){
-        res.sendFile(path.join(__dirname, "../public/login.html"));
     });
     // *************************************** Login Authentication + New Account Creation
     app.post("/login", function(req, res) {
