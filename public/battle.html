@@ -7,14 +7,11 @@
     <!-- Bootstrap File -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-
-    <!--JS-->
-    <!-- <script src="./js/battle.js"></script> -->
 
     <!--CSS-->
     <link rel="stylesheet" href="./css/battle.css">
+    <link rel="stylesheet" href="./css/quiz.css">
+    
 
 
 <!-- Overall Bootstrap Grid -->
@@ -24,7 +21,19 @@
 
        <!--quiz view-->
         <div  id="quizView">
-            <div id="header-label">
+                <div id="quiz">
+                    <div id="quiz-header">
+                        <h1>Chemistry</h1>
+                        <p class="faded">Round 1</p>
+                    </div>
+                    <div id="quiz-start-screen">
+                        <p>
+                            <a href="#" id="quiz-start-btn" class="quiz-button">Start</a>
+                        </p>
+                    </div>
+                </div>
+
+            <!-- <div id="header-label">
                 <h2 id="header-label-text">FIGHT!</h2>
                 <div id="gameOver">
                     <br>
@@ -32,7 +41,7 @@
                         <button class="btn btn-primary btn-lg result">OK</button>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
 
        <!--battle view-->
@@ -75,6 +84,16 @@
     </div>
 
 </div>
+
+
+<!--JS-->
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery.js"></script>
+
+<!-- <script src="./js/battle.js"></script> -->
+<script src="./js/quiz.js"></script>
+<script src="./js/questions.js"></script>
 
 </body>
 </html>
