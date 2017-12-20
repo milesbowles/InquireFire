@@ -1,0 +1,91 @@
+#gameOver {
+    margin-left: 48%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    display: none;
+}
+
+body {
+    background-color: #b7f7ff;
+    
+}
+#mainView {
+    padding: 5% 10% 0% 10%;
+}
+
+#gameView {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(200, 200, 200, 0.8);
+}
+
+#quizView {
+    margin-bottom: 10%;
+}
+
+#battleView {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+#scoreView {
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(200, 200, 200, 0.8);
+}
+
+#player {
+    height: 150px;
+    width: auto;
+    align-self: flex-start;
+}
+
+#attack {
+    height: 150px;
+    width: auto;
+    align-self: flex-end;
+}
+
+#enemy {
+    height: 150px;
+    width: auto;
+    align-self: flex-end;
+}
+
+#player-hp-bar {
+    width: 360px;
+}
+
+#enemy-hp-bar {
+    width: 365px;
+}
+
+
+button {
+    width: 96px;
+}
+
+button.btn-primary {
+    margin-right: 5px;
+    /*margin-bottom: 20%;*/
+}
+
+h1 {
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-size: 500%;
+}
+
+h3 {
+    color: white;
+    text-align: center;
+}
