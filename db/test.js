@@ -1,8 +1,8 @@
 var db = require("../models");
 // db.Inquiry.create({
-//     q: "In nuclear equations, a helium particle is referred to as a(n) __",
-//     subcategory: "chemistry",
-//     round: 3
+//     q: "Inertia is the..",
+//     subcategory: "physics",
+//     round: 1
 // }).then(function(dbInquiry){
 //     dbInquiry
 // });
@@ -10,16 +10,16 @@ var db = require("../models");
 //     console.log("redy");
 // });
 
-db.Choice.create({
-    c1: "positron",
-    c2: "gamma particle",
-    c3: "beta particle",
-    c4: "alpha particle",
-    ans: "alpha particle",
-    InquiryId: 8
-}).then(function(dbChoice){
-    console.log(dbChoice);
-});
+// db.Choice.create({
+//     c1: "weight of object",
+//     c2: "momentum of object",
+//     c3: "resistance to movement",
+//     c4: "distance from earth to moon",
+//     ans: "resistance to movement",
+//     InquiryId: 21
+// }).then(function(dbChoice){
+//     console.log(dbChoice);
+// });
 
 
 
@@ -27,11 +27,9 @@ db.Choice.create({
 //    console.log(dbInquiry);
 // }); 
 
-// db.Choice.findAll({
-    
-// }).then(function(dbChoice){
-//     console.log(dbChoice);
-// });
+db.Choice.findAll({}).then(function(dbChoice){
+    console.log(dbChoice);
+});
 
 
 // db.sequelize.sync().then(function(){
@@ -39,12 +37,8 @@ db.Choice.create({
 // });
 
 
-// db.Inquiry.findAll({
-//     include: [db.Choice]
+// db.Choice.findAll({
+//     include: [db.Inquiry]
 // }).then(function(dbInquiry){
-//     for (var i = 0; i < dbInquiry.length; i++){
-//         for (var k = 0; k < dbInquiry[i].Choices.length; k++){
-//             console.log(dbInquiry[i].Choices[k]);
-//         }
-//     }
+//         console.log(dbInquiry);
 // });
