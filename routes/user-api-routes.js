@@ -2,6 +2,8 @@ var express = require("express");
 var hBars = require("express-handlebars");
 var path = require("path");
 var db = require("../models");
+var fs = require("fs"); 
+
 module.exports = function(app){
     /** Upon navigation to the home-page */
     app.get("/", function(req, res){
@@ -43,51 +45,53 @@ module.exports = function(app){
                 })
             })
         } else {
-            db.UserAuth.findAll({attributes: ['email','password']}).then(function(emails) {
+            var id = 0
+            var userName = ""
+            db.UserAuth.findAll({attributes: ['email','password','username', 'id']}).then(function(emails) {
                 var authenticated = false
                 for (var i = 0; i < emails.length; i++) {
                     if ( req.body.email === emails[i].dataValues.email && req.body.password === emails[i].dataValues.password) {
                         authenticated = true
+                        userName = emails[i].dataValues.username
+                        id = emails[i].dataValues.id
                     }
                 }
                 if (authenticated) {
-                    // will eventually redirect to a url which holds username as a parameter so we know who the user is that is on the page and will display for them the homescreen
+                    // will redirect to a url which holds username as a parameter so we know who the user is that is on the page and will display for them the homescreen
                     db.UserAuth.update({
                         loggedIn: true
                     }, {
                         where: {
-                            username: req.body.username
+                            username: userName
                         }
                     }).then(function() {
-                        res.send('You have been logged in!')    
+                        res.redirect('/home.html?usr='+id)    
                     })
                 } else {
-                    // will eventually redirect back to the login screen with an error message indicating failed login attempt
-                   res.send('Incorrect login info!')
+                    // will send to a url which will signify to login.js that the user's login info was incorrect
+                    res.redirect('/?login=failed')
                 }
             })
         }
     })
     // **********************************************************************************
-    app.get("/api/users", function(req, res){
-        db.UserAuth.findAll({}).then(function(dbUsers){
-            res.json(dbUsers);
-        });
+    app.get("/api/user/:userId", function(req, res){
+        db.UserStats.findAll({
+            where: {
+                id: parseInt(req.params.userId)
+            }
+        }).then(function(stats) {
+            var stringifiedStats = JSON.stringify(stats[0].dataValues)
+            res.send(stringifiedStats).status(200)
+        })
     });
-    app.post("/api/users", function(req, res){
-        db.UserAuth.create({
-            username: req.body.username,
-            password: req.body.password
-        }).then(function(dbUsers){
-            res,json(dbUsers);
-        });
-    });
-    app.put("/api/users", function(req, res){
-        db.UserAuth.update({
-            username: req.body.username,
-            password: req.body.password 
-        }).then(function(dbUsers){
-            res.json(dbUsers);
-        });
-    });
+    app.get("/game/:userAndCategory", function(req, res){
+        var urlParams = req.params.userAndCategory.split('&')
+        for (var i = 0; i < urlParams.length; i++) {
+            urlParams[i].split('=')
+        }
+        console.log(urlParams)
+        res.send('to send user to game with appropriate questions')
+        // res.render('')
+    })
 }

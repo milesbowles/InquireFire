@@ -1,4 +1,20 @@
 jQuery(document).ready(function($){
+
+    // ************************************************ The current way we handle a failed login change, subject to change, depending on where/how the error message to user is to be displayed
+    var parseUrl = function(url) {
+      var urlArr = url.split('?')
+      var searchParams = new URLSearchParams(urlArr[1])
+      if (searchParams.has("login") === true) {
+        if (searchParams.get("login") === "failed") {
+          alert("The login has failed.")
+        }
+      }
+    }
+
+    parseUrl(window.location.href)
+    // *************************************************
+
+
     var $form_modal = $('.user-modal'),
       $form_login = $form_modal.find('#login'),
       $form_signup = $form_modal.find('#signup'),
@@ -101,28 +117,28 @@ jQuery(document).ready(function($){
     //   $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
     // });
   
-  
-    if(!Modernizr.input.placeholder){
-      $('[placeholder]').focus(function() {
-        var input = $(this);
-        if (input.val() == input.attr('placeholder')) {
-          input.val('');
-          }
-      }).blur(function() {
-        var input = $(this);
-          if (input.val() == '' || input.val() == input.attr('placeholder')) {
-          input.val(input.attr('placeholder'));
-          }
-      }).blur();
-      $('[placeholder]').parents('form').submit(function() {
-          $(this).find('[placeholder]').each(function() {
-          var input = $(this);
-          if (input.val() == input.attr('placeholder')) {
-            input.val('');
-          }
-          })
-      });
-    }
+    //********************************************TODO: Discuss with team about keeping/leaving Modernizr. If keeping, make sure to install and import package.
+    // if(!Modernizr.input.placeholder){
+    //   $('[placeholder]').focus(function() {
+    //     var input = $(this);
+    //     if (input.val() == input.attr('placeholder')) {
+    //       input.val('');
+    //       }
+    //   }).blur(function() {
+    //     var input = $(this);
+    //       if (input.val() == '' || input.val() == input.attr('placeholder')) {
+    //       input.val(input.attr('placeholder'));
+    //       }
+    //   }).blur();
+    //   $('[placeholder]').parents('form').submit(function() {
+    //       $(this).find('[placeholder]').each(function() {
+    //       var input = $(this);
+    //       if (input.val() == input.attr('placeholder')) {
+    //         input.val('');
+    //       }
+    //       })
+    //   });
+    // }
   
   });
   

@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!--Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="./assets/css/home.css">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
 
 
 </head>
@@ -31,6 +31,7 @@
                     </div>
                     <br><br><br><br><br><br><br><br><br>
                 </div>
+                <div id="stats">This will be where the stats are!</div>
             </div>
         </div>
     </div>
@@ -48,21 +49,21 @@
     <div class="row">
         <div class="col-sm-2 col-sm-offset-3">
             <div class="thumbnail">
-                <a href="">
+                <a value="science" href="">
                     <img src="./assets/graphics/logos/science-logo.png" style="width:100%; height:80px">
                 </a>
             </div>
         </div>
         <div class="col-sm-2">
             <div class="thumbnail">
-                <a href="">
+                <a value="math" href="">
                     <img src="./assets/graphics/logos/math-logo.png" style="width:100%; height:80px">
                 </a>
             </div>
         </div>
         <div class="col-sm-2">
             <div class="thumbnail">
-                <a href="">
+                <a value="history" href="">
                     <img src="./assets/graphics/logos/history-logo.png" style="width:100%; height:80px">
                 </a>
             </div>
@@ -70,6 +71,36 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    var userId = 0
+    // THIS IS FOR DISCERNING WHICH USER WE SHOULD DISPLAY THE STATS OF AND THEN SENDING A REQUEST AT THE APPOROPRIATE ROUTE
+    var parseUrl = function(url) {
+      var urlArr = url.split('?')
+      var searchParams = new URLSearchParams(urlArr[1])
+      if (searchParams.has("usr") === true) {
+        userId = searchParams.get('usr')
+        var xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200)  {
+                var statsObj = JSON.parse(this.responseText)
+                var statStr = "GAMES PLAYED: "+statsObj.gamesPlayed+"  GAMES WON: "+statsObj.gamesWon+" HIGH SCORE: "+statsObj.highScoreSingle
+                document.getElementById('stats').innerHTML = statStr
+            }
+        }
+        xhttp.open("GET", "/api/user/"+searchParams.get('usr'), true)
+        xhttp.send()
+      }
+    }
+    parseUrl(window.location.href)    
+    // ***********************************************************************************************************************
+    var updateGameLinks = function() {
+        var links = document.getElementsByTagName('a')
+        for (var i = 0; i < links.length; i++) {
+            links[i].setAttribute('href', '/game/usr='+userId+'&category='+links[i].attributes[0].value)
+        }
+    }
+    updateGameLinks()
+</script>
 
 </body>
 </html>
