@@ -98,9 +98,9 @@ $(document).ready(function() {
             }, 1000);
         },
         attack: function () {
-            $('#enemy-img').attr('src', this.state.attack);
+            $('#enemyo').attr('src', this.state.attack);
+            $('#attack').attr('src', this.state.attack);
             enemy.sfx.attack.play();
-            player.hitPoints = player.hitPoints - roll(enemy.power);
             player.updateHitPoints();
             enemy.stop();
         },
@@ -163,13 +163,16 @@ $(document).ready(function() {
 
 });
 
+// Level determines enemy character
+var level = 1;
+
 function main() {
     // settup game
     
 }
 
 
-var difficulty = null;
+
 
 // TODO: create state function
 
@@ -188,16 +191,13 @@ var attackView = {
         playerNormal: '',
         playerSpecial: '',
         //Enemy
-        enemyNormal: '',
+        dragonNormal: './assets/graphics/attacks/fire.gif',
         enemySpecial: '',
         
         off: ''
     },
-    engage: function (character, attack_type) {
-        $('#attack-area').attr('src', this.state.engage).css({
-            'margin-top' : '35%',
-            'height' : '190%',
-            'width' : '190%'
+    engage: function () {
+        $('#attack').attr('src', this.state).css({
         });
     },
     disengage: function () {
