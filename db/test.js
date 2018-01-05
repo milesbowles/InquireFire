@@ -1,59 +1,63 @@
 var db = require("../models");
-/** To create a new element on the questions table */
-// db.Inquiry.update({
-//     q: "Assuming no air resistance, what is the final speed of an object dropped from 3 meters?",
-//     subcategory: "physics",
-//     round: 2
-// }, {
-//     where: {
-//         id: 22
+var QuestionsAnswers = require("../db/questions.js");
+
+/**This function will populate the Questions table */
+function createQuestions(QuestionsAnswers){
+    for (var i = 0; i < QuestionsAnswers.length; i++){
+        db.Inquiry.create({
+            q: QuestionsAnswers[i].q,
+            answered: false,
+            subcategory: QuestionsAnswers[i].subcategory,
+            round: QuestionsAnswers[i].round,
+        }).then(function(dbInquiry){
+            console.log("yep");
+        });
+        db.sequelize.sync().then(function(){
+            console.log("ready");
+        });
+    }
+};
+/**This function will populate the Answers table */
+function createAnswers(QuestionsAnswers){
+    for (var i = 0; i < QuestionsAnswers.length; i++){
+        var identification = i + 1;
+        db.Choice.create({
+            c1: QuestionsAnswers[i].c1,
+            c2: QuestionsAnswers[i].c2,
+            c3: QuestionsAnswers[i].c3,
+            c4: QuestionsAnswers[i].c4,
+            ans: QuestionsAnswers[i].ans,
+            InquiryId: identification
+        }).then(function(dbChoice){
+            console.log("ready");
+        });
+        db.sequelize.sync().then(function(){
+            console.log("ready");
+        });
+    }
+};
+// createQuestions(QuestionsAnswers);
+
+// createAnswers(QuestionsAnswers);
+
+// db.Inquiry.findAll({}).then(function(dbInquiry){
+//     for (var i = 0; i < dbInquiry.length; i++){
+//         console.log(dbInquiry[i].id + " " + dbInquiry[i].q + " " + dbInquiry[i].round);            
 //     }
-// }).then(function(dbInquiry){
-//     dbInquiry
-// });
-// db.sequelize.sync().then(function(){
-//     console.log("redy");
 // });
 
+db.Choice.findAll({}).then(function(dbChoice){
+    for (var i = 0; i < dbChoice.length; i++){
+        console.log(dbChoice[i].id + " " + dbChoice[i].c1 + ", " + dbChoice[i].c2 + ", " + dbChoice[i].c3 + ", " + dbChoice[i].c4 + "... " + dbChoice[i].ans + " " + dbChoice[i].InquiryId);
+    }
+});
 
-/** To create a new element on the multiple choices table */
 // db.Choice.update({
-//     c1: "59 m/s",
-//     c2: "7.7 m/s",
-//     c3: "98 m/s",
-//     c4: "none of the above",
-//     ans: "7.7 m/s",
-//     InquiryId: 22
+//     InquiryId: 10
 // }, {
 //     where: {
-//         id: 22
+//         id: 10
 //     }
 // }).then(function(dbChoice){
-//     console.log(dbChoice);
-// });
-
-
-//** Code to find the questions from the questions table */
-db.Inquiry.findAll({}).then(function(dbInquiry){
-   for (var i = 0; i < dbInquiry.length; i++){
-       console.log(dbInquiry[i].id + " " + dbInquiry[i].q + " " + dbInquiry[i].round);
-   }
-}); 
-/** Code to find the choices embedded in the multiple choices table */
-// db.Choice.findAll({}).then(function(dbChoice){
-//     for (var i = 0; i < dbChoice.length; i++){
-//         console.log(dbChoice[i].id + ": " + dbChoice[i].c1 + ", " + dbChoice[i].c2 + ", " + dbChoice[i].c3 + ", " + dbChoice[i].c4 + ", " + dbChoice[i].ans);
-//     }
-// });
-
-
-// db.sequelize.sync().then(function(){
 //     console.log("ready");
-// });
-
-
-// db.Choice.findAll({
-//     include: [db.Inquiry]
-// }).then(function(dbInquiry){
-//         console.log(dbInquiry);
 // });
