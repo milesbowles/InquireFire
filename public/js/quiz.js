@@ -259,7 +259,7 @@
       finishButtonText: 'Finish',
       restartButtonText: 'Restart'
     };
-  
+
     $.fn.quiz = function(options) {
       return this.each(function() {
         new $.quiz(this, options);

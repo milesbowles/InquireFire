@@ -1,51 +1,31 @@
 // JavaScript function that wraps everything
 $(document).ready(function() {
 
-    // Gets Link for Theme Song
+    // Gets Link for SFX
     // var gameover_sfx = new Audio('Assets/media/sound-effects/game-over.wav');
     // var explosion_sfx = new Audio('Assets/media/sound-effects/explosion.wav');
 
 
     var gameViewWidth = $('#gameView').width();
     // var coins = 0;
-
+    
 
     // Player Object
     var player = {
-        power: 30,
         hitPoints: 50,
-        speed: 20,
-        range: 1200,
-        location: document.querySelector('#player'),
         sfx: {
-            move: new Audio('Assets/media/sound-effects/tank-move.wav'),
-            attack: new Audio('Assets/media/sound-effects/cannon-blast.wav')
+            // move: new Audio('Assets/media/sound-effects/tank-move.wav'),
+            // attack: new Audio('Assets/media/sound-effects/cannon-blast.wav')
         },
         state: {
-            forward: 'Assets/media/player/cannon/cannon-forward.gif',
-            back: 'Assets/media/player/cannon/cannon-back.gif',
             stationary: 'Assets/media/player/cannon/cannon-stationary.gif',
             attack: 'Assets/media/player/cannon/cannon-attack.gif'
-        },
-        moveForward: function () {
-            var move_forward = '+=' + (gameViewWidth / this.speed) + 'px';
-            player.sfx.move.play();
-            $('#player-img').attr('src', player.state.forward);
-            $('#player').animate({ left: move_forward }, 1800);
-            this.stop();
-        },
-        moveBackward: function () {
-            var move_back = '-=' + (gameViewWidth / this.speed) + 'px';
-            player.sfx.move.play();
-            $('#player-img').attr('src', player.state.back);
-            $('#player').animate({ left: move_back }, 1800);
-            this.stop();
         },
         stop: function () {
             setTimeout(function() {
                 $('#player-img').attr('src', player.state.stationary);
             }, 1000);
-            enemy.turn();
+            // enemy.turn();
 
         },
         attack: function () {
@@ -74,11 +54,6 @@ $(document).ready(function() {
                 }
             }, 1000);
         },
-        endTurn: function () {
-            // $('#controlView').fadeTo('slow', 0.3);
-            // $('#header-label').fadeTo('slow', 0.0);
-            enemy.turn();
-        },
         explode: function () {
             $('#player-img').attr('src', 'Assets/media/death/explosion.gif');
             explosion_sfx.play();
@@ -99,11 +74,7 @@ $(document).ready(function() {
     // Enemy Object
 
     var enemy = {
-        power: 20,
         hitPoints: 50,
-        speed: 10,
-        range: 1200,
-        location: document.querySelector('#enemy'),
         sfx: {
             move: new Audio('Assets/media/sound-effects/ufo-move.wav'),
             attack: new Audio('Assets/media/sound-effects/lazer-blast.wav')
@@ -113,24 +84,6 @@ $(document).ready(function() {
             back: 'Assets/media/enemy/enemy-ufo-back.gif',
             stationary: 'Assets/media/enemy/enemy-ufo-stationary.gif',
             attack: 'Assets/media/enemy/enemy-ufo-lazer-attack.gif'
-        },
-        moveForward: function () {
-            var move_forward = '-=' + (gameViewWidth / this.speed) + 'px';
-            enemy.sfx.move.play();
-            $('#enemy-img').attr('src', this.state.forward).css({
-                'margin-top' : '35%',
-                'height' : '190%',
-                'width' : '190%'
-            });
-            $('#enemy').animate({ left: move_forward }, 1800);
-            this.stop();
-        },
-        moveBackward: function () {
-            var move_back = '+=' + (gameViewWidth / this.speed) + 'px';
-            enemy.sfx.move.play();
-            $('#enemy-img').attr('src', this.state.back);
-            $('#enemy').animate({ left: move_back }, 1800);
-            this.stop();
         },
         stop: function () {
             setTimeout(function() {
@@ -155,22 +108,6 @@ $(document).ready(function() {
             var percentage = this.hitPoints.toString() + '%';
             $('#enemy-hit-points').attr('aria-valuenow', this.hitPoints).css('width', percentage).text(this.hitPoints.toString());
             gameover();
-        },
-        turn: function () {
-            setTimeout(function() {
-                if (enemy.hitPoints > 0) {
-                    if (distanceBetweenElements(enemy.location,player.location) < enemy.range){
-                        enemy.attack();
-                    } else {
-                        enemy.moveForward();
-                    }
-                }
-            }, 1000);
-        },
-        endTurn: function () {
-            $('#controlView').fadeTo('slow', 1);
-            $('#header-label').fadeTo('slow', 1);
-
         },
         explode: function () {
             $('#enemy-img').attr('src', 'Assets/media/death/explosion.gif').css({
@@ -215,12 +152,6 @@ $(document).ready(function() {
         }
     }
 
-
-
-    function roll(max) {
-        return Math.floor(Math.random() * max) + 1
-    }
-
     function distanceBetweenElements(element1, element2) {
         var e1Rect = element1.getBoundingClientRect();
         var e2Rect = element2.getBoundingClientRect();
@@ -230,21 +161,62 @@ $(document).ready(function() {
         return distance;
     }
 
-    player.turn();
-
-    $('#coins').html(coins.toString);
-    // // Move Buttons
-    // $("#attack-btn").on("click", function() {
-    //     player.attack();
-    // });
-    //
-    // $(".left-button").on("click", function() {
-    //     player.moveBackward()
-    // });
-    //
-    // $(".right-button").on("click", function() {
-    //     player.moveForward()
-    // });
-
-
 });
+
+function main() {
+    // settup game
+    
+}
+
+
+var difficulty = null;
+
+// TODO: create state function
+
+// TODO: create new round logic
+
+// TODO: add logic for varied attacks based on speed of answers
+
+// TODO: add timer logic
+
+// TODO: add function for attack area
+
+
+var attackView = {
+    state: {
+        //Player
+        playerNormal: '',
+        playerSpecial: '',
+        //Enemy
+        enemyNormal: '',
+        enemySpecial: '',
+        
+        off: ''
+    },
+    engage: function (character, attack_type) {
+        $('#attack-area').attr('src', this.state.engage).css({
+            'margin-top' : '35%',
+            'height' : '190%',
+            'width' : '190%'
+        });
+    },
+    disengage: function () {
+        $('#attack-area').attr('src', this.state.off).css({
+            'margin-top' : '35%',
+            'height' : '190%',
+            'width' : '190%'
+        });
+    },
+    characterCheck: function () {
+
+        return character;
+    },
+    check: function () {
+        if (player.state == attack || enemy.state == attack) {
+            setTimeout(function() {
+                attackView.engage();
+            }, 1000);
+            attackView.disengage();
+        }
+    }
+}

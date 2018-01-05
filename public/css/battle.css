@@ -10,6 +10,7 @@ body {
     
 }
 #mainView {
+    /* display: flex; */
     padding: 5% 10% 0% 10%;
 }
 
@@ -23,26 +24,30 @@ body {
 }
 
 #quizView {
-    margin-bottom: 10%;
+    /* height: 30vh; */
+    display: flex;
+    margin-bottom: 10vh;
 }
 
 #battleView {
+    height: 20vh;
     display: flex;
     flex-direction: row;
     /* align-items: center; */
     justify-content: space-between;
 }
 
-#scoreView {
+/* #scoreView {
     height: 20vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     background-color: rgba(200, 200, 200, 0.8);
-}
+} */
 
 #player {
+    /* margin-top: 20%;  */
     height: 150px;
     width: auto;
     align-self: flex-start;
@@ -79,10 +84,10 @@ button.btn-primary {
 }
 
 h1 {
-    margin-top: 5%;
+    /* margin-top: 5%; */
     color: white;
     text-align: center;
-    font-size: 500%;
+    font-size: 200%;
 }
 
 h3 {
