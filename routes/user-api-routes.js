@@ -121,7 +121,9 @@ module.exports = function(app){
     app.get("/api/:userId/:category/:isPerfect", function(req, res) {
         if (req.params.isPerfect === "true") {
             db.UserStats.update({
-                where: {db.Sequelize.Op.or]: [{userId: parseInt(req.params.userId)},{category: req.params.category}]}
+                where: {
+                    [db.Sequelize.Op.and]: [{userId: parseInt(req.params.userId)},{category: req.params.category}]
+                }
             }).then(function() {
                 res.redirect('/home.html?usr='+req.params.userId)
             })
