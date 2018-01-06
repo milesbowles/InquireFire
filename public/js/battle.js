@@ -54,22 +54,22 @@ var enemy = {
     },
     character: {
         dragon: {
-            stationary: './assets/graphics/enemies/dragon/stationaryDragon.gif',
-            attack: './assets/graphics/enemies/dragon/attackDragon.gif',
-            hit: './assets/graphics/enemies/dragon/hitDragon.gif',
+            stationary: '/assets/graphics/enemies/dragon/stationaryDragon.gif',
+            attack: '/assets/graphics/enemies/dragon/attackDragon.gif',
+            hit: '/assets/graphics/enemies/dragon/hitDragon.gif',
             projectile: './assets/graphics/enemies/dragon/projectileDragon.gif'
         },
         eyeball: {
-            stationary: './assets/graphics/enemies/eyeball/stationaryEyeball.gif',
-            attack: './assets/graphics/enemies/eyeball/attackEyeball.gif',
-            hit: './assets/graphics/enemies/eyeball/hitEyeball.gif',
-            projectile: './assets/graphics/enemies/eyeball/projectileEyeball.gif'
+            stationary: '/assets/graphics/enemies/eyeball/stationaryEyeball.gif',
+            attack: '/assets/graphics/enemies/eyeball/attackEyeball.gif',
+            hit: '/assets/graphics/enemies/eyeball/hitEyeball.gif',
+            projectile: '/assets/graphics/enemies/eyeball/projectileEyeball.gif'
         },
         knight: {
-            stationary: './assets/graphics/enemies/knight/stationaryKnight.gif',
-            attack: './assets/graphics/enemies/knight/attackKnight.gif',
-            hit: './assets/graphics/enemies/knight/hitKnight.gif',
-            projectile: './assets/graphics/enemies/knight/projectileKnight.gif'
+            stationary: '/assets/graphics/enemies/knight/stationaryKnight.gif',
+            attack: '/assets/graphics/enemies/knight/attackKnight.gif',
+            hit: '/assets/graphics/enemies/knight/hitKnight.gif',
+            projectile: '/assets/graphics/enemies/knight/projectileKnight.gif'
         }
     },
     stop: function () {
@@ -187,14 +187,14 @@ var player = {
         // attack: new Audio('Assets/media/sound-effects/lazer-blast.wav')
     },
     state: {
-        stationary: './assets/graphics/characters/wizard/stationaryWizard.gif',
-        attack: './assets/graphics/characters/wizard/attackWizard.gif',
-        hit: './assets/graphics/characters/wizard/hitWizard.gif',
-        projectile: './assets/graphics/characters/wizard/projectileWizard.gif'
+        stationary: '/assets/graphics/characters/wizard/stationaryWizard.gif',
+        attack: '/assets/graphics/characters/wizard/attackWizard.gif',
+        hit: '/assets/graphics/characters/wizard/hitWizard.gif',
+        projectile: '/assets/graphics/characters/wizard/projectileWizard.gif'
     },
     stop: function () {
         document.getElementById("player").src=this.state.stationary;
-        document.getElementById("attack").src='./assets/graphics/placeholder.png';
+        document.getElementById("attack").src='/assets/graphics/placeholder.png';
     },
     attack: function () {
         document.getElementById("player").src=this.state.attack;
