@@ -89,15 +89,15 @@ var enemy = {
         switch (level) {
             case 1:
                 document.getElementById("enemy").src=this.character.eyeball.stationary;
-                document.getElementById("attack").src='./assets/graphics/placeholder.png';
+                document.getElementById("attack").src='/assets/graphics/placeholder.png';
                 break;
             case 2:
                 document.getElementById("enemy").src=this.character.knight.stationary;
-                document.getElementById("attack").src='./assets/graphics/placeholder.png';
+                document.getElementById("attack").src='/assets/graphics/placeholder.png';
                 break;
             case 3:
                 document.getElementById("enemy").src=this.character.dragon.stationary;
-                document.getElementById("attack").src='./assets/graphics/placeholder.png';
+                document.getElementById("attack").src='/assets/graphics/placeholder.png';
                 break;
             default:
                 break;

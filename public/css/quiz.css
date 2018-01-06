@@ -1,5 +1,5 @@
 .faded {
-    color: #777;
+    color: rgb(187, 187, 187);
   }
   #quiz-counter {
     color: #88449a;
@@ -12,7 +12,8 @@
   
   .quiz-container a {
       text-decoration: none;
-      color: #333;
+      color: rgb(255, 255, 255);
+      text-align: center;
   }
   
   #quiz-header,
@@ -24,6 +25,7 @@
   
   .question {
       font-size: 1.25em;
+      font-weight: bolder; 
   }
   
   .answers {
@@ -35,7 +37,8 @@
       display: block;
       padding: 0.5em 1em;
       margin-bottom: 0.5em;
-      background: #fff;
+      background: rgb(54, 54, 54);
+      border-radius: 5px;
   }
   
   .answers a.correct {
@@ -51,10 +54,11 @@
   }
   
   #quiz-controls {
-      background: #63c5bc;
-      color: #111;
+      background: rgb(54, 54, 54);
+      color: rgb(255, 255, 255);
       padding: 0.25em 0.5em 0.5em;
       text-align: center;
+      border-radius: 5px;
   }
   
   #quiz-response {}
@@ -68,10 +72,12 @@
       padding: 0.5em 1em;
       background: #88449a;
       color: #fff;
+      border-radius: 5px;
   }
   #quiz-buttons a {
-      background: #fff;
-      color: #333;
+      background: rgb(160, 160, 160);
+      color: rgb(255, 255, 255);
+      border-radius: 5px;
   }
   
   /* Quiz State Overrides */
