@@ -134,6 +134,8 @@
           response = questions[currentQuestionIndex].correctResponse;
           //Trigger play attack animation
           player.attack();
+          correctAnswers++;
+          checkLevel();
           score++;
         } else {
           // Trigger enemy attack animation
