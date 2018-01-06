@@ -107,14 +107,16 @@ $(document).ready(function() {
         stop: function () {
             switch (level) {
                 case 1:
-                $('#enemy').attr('src', this.character.eyeball.stationary).css();
-                $('#attack').attr('src', '../assets/graphics/placeholder.png').css();
+                    $('#enemy').attr('src', this.character.eyeball.stationary).css();
+                    $('#attack').attr('src', '../assets/graphics/placeholder.png').css();
                     break;
                 case 2:
-                
+                    $('#enemy').attr('src', this.character.knight.stationary).css();
+                    $('#attack').attr('src', '../assets/graphics/placeholder.png').css();
                     break;
                 case 3:
-            
+                    $('#enemy').attr('src', this.character.dragon.stationary).css();
+                    $('#attack').attr('src', '../assets/graphics/placeholder.png').css();
                     break;
                 default:
                     break;
@@ -123,14 +125,16 @@ $(document).ready(function() {
         attack: function () {
             switch (level) {
                 case 1:
-                $('#enemy').attr('src', this.character.eyeball.attack).css();
-                $('#attack').attr('src', this.character.eyeball.projectile).css();
+                    $('#enemy').attr('src', this.character.eyeball.attack).css();
+                    $('#attack').attr('src', this.character.eyeball.projectile).css();
                     break;
                 case 2:
-                
+                    $('#enemy').attr('src', this.character.knight.attack).css();
+                    $('#attack').attr('src', this.character.knight.projectile).css();
                     break;
                 case 3:
-            
+                    $('#enemy').attr('src', this.character.dragon.attack).css();
+                    $('#attack').attr('src', this.character.dragon.projectile).css();
                     break;
                 default:
                     break;
