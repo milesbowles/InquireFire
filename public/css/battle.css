@@ -50,8 +50,8 @@ body {
 } */
 
 #player {
-    margin-top: -10%; 
-    height: 380px;
+    margin-top: -12%; 
+    height: 400px;
     width: auto;
     align-self: flex-start;
 }
