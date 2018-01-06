@@ -152,6 +152,8 @@ module.exports = function(app){
                 res.render('questions', {questObj: questObj})
             })
         })
-
-    })
+    });
+    app.get("/game/end", function(req, res) {
+        res.redirect('/')
+    });
 }
