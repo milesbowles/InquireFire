@@ -18,12 +18,5 @@ module.exports = function(sequelize, DataTypes){
     }, {
         timestamps: false
     });
-    Choice.associate = function(models){
-        Choice.belongsTo(models.Inquiry, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
     return Choice;
 };
