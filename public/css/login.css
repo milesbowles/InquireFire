@@ -10,7 +10,11 @@
   }
   
   body {
-      background: #b7f7ff;
+      background: #C48548;
+      padding: 0% 10% 0% 10%;
+      background-image: url('../assets/graphics/backgrounds/cave.gif');
+      background-repeat: repeat-x;
+      background-size: auto;
   }
   
   .main-nav {

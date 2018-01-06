@@ -135,7 +135,7 @@
           //Trigger play attack animation
           player.attack();
           correctAnswers++;
-          checkLevel();
+          checkLevel(correctAnswers);
           score++;
         } else {
           // Trigger enemy attack animation
