@@ -41,8 +41,12 @@
 
 
 // Level determines enemy character
-var level = 1;
-
+var parseUrlforRound = function() {
+    var initUrlArr = window.location.href.split('/')
+    var finalUrlArr = initUrlArr[initUrlArr.length - 1].split('&')
+    return finalUrlArr[2].split('=')[1]
+}
+var level = parseUrlforRound();
 
 
 // Enemy Object

@@ -57,7 +57,13 @@ module.exports = function(app){
                         gamesWon: 0,
                         gamesPlayed: 0,
                         perfectGames: 0,
-                        category: 'science',
+                        category: 'chemistry',
+                        userId: parseInt(user.dataValues.id)
+                    }, {
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'biology',
                         userId: parseInt(user.dataValues.id)
                     }   
                 ]).then(function() {
