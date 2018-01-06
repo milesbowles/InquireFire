@@ -40,14 +40,7 @@
     // }
 
 
-// Level determines enemy character
-var parseUrlforRound = function() {
-    var initUrlArr = window.location.href.split('/')
-    var finalUrlArr = initUrlArr[initUrlArr.length - 1].split('&')
-    return finalUrlArr[2].split('=')[1]
-}
-var level = parseUrlforRound();
-
+var level = 1
 
 //WILL SET CORRECT CATEGORY TEXT IN GAME
 var parseUrlforCategory = function() {
