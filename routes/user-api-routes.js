@@ -104,11 +104,18 @@ module.exports = function(app){
     app.get("/api/user/:userId", function(req, res){
         db.UserStats.findAll({
             where: {
-                id: parseInt(req.params.userId)
+                userId: parseInt(req.params.userId)
             }
         }).then(function(stats) {
-            var stringifiedStats = JSON.stringify(stats[0].dataValues)
-            res.send(stringifiedStats).status(200)
+            console.log(stats)
+            var statsArr = []
+            for (var i = 0; i < stats.length; i++) {
+                statsArr[i] = {}
+                statsArr[i].category = stats[i].dataValues.category
+                statsArr[i].gamesPlayed = stats[i].dataValues.gamesPlayed
+                statsArr[i].perfectGames = stats[i].dataValues.perfectGames
+            }
+            res.send(statsArr).status(200)
         })
     });
     app.get("/game/:userAndCategory", function(req, res) {

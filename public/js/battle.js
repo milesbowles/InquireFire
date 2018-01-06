@@ -40,7 +40,7 @@
     // }
 
 
-// Level determines enemy character
+//Level determines enemy character
 var parseUrlforRound = function() {
     var initUrlArr = window.location.href.split('/')
     var finalUrlArr = initUrlArr[initUrlArr.length - 1].split('&')
