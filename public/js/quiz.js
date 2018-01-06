@@ -134,7 +134,7 @@
             // player attack
             score++;
           } else {
-            attackView.engage();
+            enemy.attack();
             $answerEl.addClass('incorrect');
             response = questions[currentQuestionIndex].incorrectResponse;
             if (!base.options.allowIncorrect) {
