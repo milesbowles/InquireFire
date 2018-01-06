@@ -131,9 +131,10 @@
           if (selected === correct) {
             $answerEl.addClass('correct');
             response = questions[currentQuestionIndex].correctResponse;
-            attackView.engage();
+            // player attack
             score++;
           } else {
+            attackView.engage();
             $answerEl.addClass('incorrect');
             response = questions[currentQuestionIndex].incorrectResponse;
             if (!base.options.allowIncorrect) {

@@ -7,7 +7,9 @@ $(document).ready(function() {
 
 
     var gameViewWidth = $('#gameView').width();
-    // var coins = 0;
+
+    // Level determines enemy character
+    var level = 1;
     
 
     // Player Object
@@ -19,7 +21,8 @@ $(document).ready(function() {
         },
         state: {
             stationary: 'Assets/media/player/cannon/cannon-stationary.gif',
-            attack: 'Assets/media/player/cannon/cannon-attack.gif'
+            attack: 'Assets/media/player/cannon/cannon-attack.gif',
+            hit: ''
         },
         stop: function () {
             setTimeout(function() {
@@ -79,11 +82,27 @@ $(document).ready(function() {
             move: new Audio('Assets/media/sound-effects/ufo-move.wav'),
             attack: new Audio('Assets/media/sound-effects/lazer-blast.wav')
         },
-        state: {
-            forward: 'Assets/media/enemy/enemy-ufo-forward.gif',
-            back: 'Assets/media/enemy/enemy-ufo-back.gif',
-            stationary: 'Assets/media/enemy/enemy-ufo-stationary.gif',
-            attack: 'Assets/media/enemy/enemy-ufo-lazer-attack.gif'
+        character: {
+            dragon: {
+                stationary: '',
+                attack: '',
+                hit: '',
+                projectile: ''
+            },
+            eyeball: {
+                stationary: '',
+                attack: '',
+                hit: '',
+                projectile: ''
+            },
+            knight: {
+                stationary: '',
+                attack: '',
+                hit: '',
+                projectile: ''
+            }
+
+
         },
         stop: function () {
             setTimeout(function() {
@@ -98,6 +117,14 @@ $(document).ready(function() {
             }, 1000);
         },
         attack: function () {
+            switch (level) {
+                case 1:
+                $('#attack').attr('src', this.state.dragon).css();
+                    break;
+            
+                default:
+                    break;
+            }
             $('#enemyo').attr('src', this.state.attack);
             $('#attack').attr('src', this.state.attack);
             enemy.sfx.attack.play();
@@ -163,8 +190,7 @@ $(document).ready(function() {
 
 });
 
-// Level determines enemy character
-var level = 1;
+
 
 function main() {
     // settup game
@@ -188,17 +214,23 @@ function main() {
 var attackView = {
     state: {
         //Player
-        playerNormal: '',
-        playerSpecial: '',
+        player: '',
         //Enemy
-        dragonNormal: './assets/graphics/attacks/fire.gif',
-        enemySpecial: '',
-        
-        off: ''
+        dragon: './assets/graphics/attacks/fire.gif',
+        //Placeholder
+        placeholder: ''
     },
-    engage: function () {
-        $('#attack').attr('src', this.state).css({
-        });
+    engage: function (level) {
+        console.log(character);
+        switch (level) {
+            case 1:
+            $('#attack').attr('src', this.state.dragon).css();
+                break;
+        
+            default:
+                break;
+        }
+        
     },
     disengage: function () {
         $('#attack-area').attr('src', this.state.off).css({
