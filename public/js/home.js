@@ -12,6 +12,12 @@ $(document).ready(function() {
             if (this.readyState === 4 && this.status === 200)  {
                 var statsObj = JSON.parse(this.responseText)
                 console.log(statsObj)
+                for (var i = 0; i < statsObj.length; i++) {
+                    var gamesPlayed = document.getElementsByClassName(statsObj[i].category+' gamesPlayed')
+                    var perfectGames = document.getElementsByClassName(statsObj[i].category+' perfectGames')
+                    gamesPlayed[0].innerHTML = statsObj[i].gamesPlayed
+                    perfectGames[0].innerHTML = statsObj[i].perfectGames
+                }
             }
         }
         xhttp.open("GET", "/api/user/"+searchParams.get('usr'), true)
