@@ -34,6 +34,13 @@ var QuestionsAnswers = [
     {q: "What is the lowest common denominator of 1/6 and 1/9?", answered: false, subcategory: "mathematics", round: "2", c1: "6", c2: "9", c3: "3", c4: "18", ans: "18"},
     {q: "What is the radius of a circle with a circumference of 8pi units?", answered: false, subcategory: "mathematics", round: "3", c1: "8 units", c2: "4 units", c3: "3.14 units", c4: "2 units", ans: "4 units"},
     {q: "What is the radius of a circle with an area of 16pi units?", answered: false, subcategory: "mathematics", round: "3", c1: "8 units", c2: "4 units", c3: "3.14 units", c4: "2 units", ans: "4 units"},
-    {q: "A secant line touches a circle at exactly __ point(s)", answered: false, subcategory: "mathematics", round: "3", c1: "1", c2: "2", c3: "3", c4: "4", ans: "2"}
+    {q: "A secant line touches a circle at exactly __ point(s)", answered: false, subcategory: "mathematics", round: "3", c1: "1", c2: "2", c3: "3", c4: "4", ans: "2"},
+    {q: "What year did Columbus discover America?", answered:false, subcategory: "history", round: "1", c1: "1492", c2: "1814", c3: "1499", c4: "0", ans: "1492"},
+    {q: "What is the last name of the first president of the U.S.?", answered:false, subcategory: "history", round: "1", c1: "Adams", c2: "Jefferson", c3: "Washington", c4: "Lincoln", ans: "Washington"},
+    {q: "How many colonies did New England have?", answered:false, subcategory: "history", round: "2", c1: "10", c2: "11", c3: "12", c4: "13", ans: "13"},
+    {q: "Who was the 16th President of the U.S.?", answered:false, subcategory: "history", round: "2", c1: "Lincoln", c2: "Adams", c3: "Bush", c4: "Washington", ans: "Lincoln"},
+    {q: "Who was the 16th President of the U.S.?", answered:false, subcategory: "history", round: "3", c1: "Lincoln", c2: "Adams", c3: "Bush", c4: "Washington", ans: "Lincoln"},
+    {q: "Who discovered America?", answered:false, subcategory: "history", round: "3", c1: "Columbus", c2: "Galileo", c3: "Marco Polo", c4: "None of the above", ans: "Columbus"},
+    {q: "What government branch is the president associated with?", answered:false, subcategory: "history", round: "3", c1: "Legislative", c2: "Executive", c3: "Judicial", c4: "None", ans: "Executive"},
 ]; 
 module.exports = QuestionsAnswers;
