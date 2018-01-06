@@ -138,6 +138,10 @@
           response = questions[currentQuestionIndex].correctResponse;
           // player attack
           player.attack();
+
+          correctAnswers++;
+          checkLevel(correctAnswers);
+
           score++;
         } else {
           enemy.attack();
