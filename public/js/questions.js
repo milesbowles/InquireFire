@@ -3,7 +3,6 @@ $('#questions').remove()
 for (var i = 0; i < initQuestionsArr.length; i++) {
   initQuestionsArr[i] = initQuestionsArr[i].split(',')
 }
-console.log(initQuestionsArr)
 var parsedQuestionsArr = []
 for (var i = 0; i < initQuestionsArr.length; i++) {
   parsedQuestionsArr[i] = {}
@@ -17,6 +16,7 @@ for (var i = 0; i < initQuestionsArr.length; i++) {
     }
   }
 }
+console.log(parsedQuestionsArr)
 $('#quiz').quiz({
     //resultsScreen: '#results-screen',
     //counter: false,

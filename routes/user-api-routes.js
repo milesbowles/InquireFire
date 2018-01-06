@@ -119,7 +119,6 @@ module.exports = function(app){
         db.Inquiry.findAll({
             where: {
                 subcategory: urlParams[1][1],
-                round: parseInt(urlParams[2][1])
             }
         }).then(function(quests) {
             var questObj = {}
