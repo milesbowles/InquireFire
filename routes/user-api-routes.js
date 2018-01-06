@@ -120,9 +120,13 @@ module.exports = function(app){
     });
     app.get("/api/:userId/:category/:isPerfect", function(req, res) {
         if (req.params.isPerfect === "true") {
-            res.send('you had a perfect game')
+            db.UserStats.update({
+                where: {db.Sequelize.Op.or]: [{userId: parseInt(req.params.userId)},{category: req.params.category}]}
+            }).then(function() {
+                res.redirect('/home.html?usr='+req.params.userId)
+            })
         } else {
-            res.send('you did not have a perfect game')
+            res.redirect('/home.html?usr='+req.params.userId)
         }
     })
     app.get("/game/:userAndCategory", function(req, res) {
@@ -159,8 +163,5 @@ module.exports = function(app){
                 res.render('questions', {questObj: questObj})
             })
         })
-    });
-    app.get("/game/end", function(req, res) {
-        res.redirect('/')
     });
 }
