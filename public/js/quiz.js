@@ -13,6 +13,9 @@
 
     base.options = $.extend($.quiz.defaultOptions, options);
 
+    // Level determines enemy character
+    // var level = 1;
+
     var questions = base.options.questions,
       numQuestions = questions.length,
       startScreen = base.options.startScreen,
@@ -53,6 +56,7 @@
 
         $(document).on('click', '#quiz-finish-btn', function (e) {
           e.preventDefault();
+          window.location.href = "/"
           base.methods.finish();
         });
 
@@ -132,13 +136,10 @@
         if (selected === correct) {
           $answerEl.addClass('correct');
           response = questions[currentQuestionIndex].correctResponse;
-          //Trigger play attack animation
+          // player attack
           player.attack();
-          correctAnswers++;
-          checkLevel();
           score++;
         } else {
-          // Trigger enemy attack animation
           enemy.attack();
           $answerEl.addClass('incorrect');
           response = questions[currentQuestionIndex].incorrectResponse;
@@ -180,6 +181,7 @@
         }
       },
       gameOver: function (response) {
+        gameOverBol = true;
         // if gameover screen not in DOM, add it
         if ($(gameOverScreen).length === 0) {
           var quizHtml = '';
