@@ -16,11 +16,6 @@ jQuery(document).ready(function($){
 
     parseUrl(window.location.href)
     // *************************************************
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
     var $form_modal = $('.user-modal'),
       $form_login = $form_modal.find('#login'),
       $form_signup = $form_modal.find('#signup'),
@@ -113,7 +108,6 @@ jQuery(document).ready(function($){
       $form_forgot_password.addClass('is-selected');
     }
   
-<<<<<<< HEAD
     // //REMOVE THIS - it's just to show error messages 
     // $form_login.find('input[type="submit"]').on('click', function(event){
     //   event.preventDefault();
@@ -147,8 +141,6 @@ jQuery(document).ready(function($){
     //   });
     // }
   
-=======
->>>>>>> master
   });
   
   

@@ -79,8 +79,8 @@ $(document).ready(function() {
     var enemy = {
         hitPoints: 50,
         sfx: {
-            move: new Audio('Assets/media/sound-effects/ufo-move.wav'),
-            attack: new Audio('Assets/media/sound-effects/lazer-blast.wav')
+            // move: new Audio('Assets/media/sound-effects/ufo-move.wav'),
+            // attack: new Audio('Assets/media/sound-effects/lazer-blast.wav')
         },
         character: {
             dragon: {
@@ -119,9 +119,12 @@ $(document).ready(function() {
         attack: function () {
             switch (level) {
                 case 1:
-                $('#attack').attr('src', this.state.dragon).css();
+                $('#enemy').attr('src', this.character.eyeball.attack).css();
+                $('#attack').attr('src', this.character.eyeball.projectile).css();
                     break;
-            
+                case 2:
+                $('#attack').attr('src', this.character.knight.attack).css();
+                    break;
                 default:
                     break;
             }
