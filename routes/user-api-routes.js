@@ -33,13 +33,36 @@ module.exports = function(app){
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password
-            }).then(function() {
-                db.UserStats.create({
-                    gamesWon: 0,
-                    gamesPlayed: 0,
-                    perfectGames: 0
-                }).then(function() {
-                    res.send('Welcome to the home page ' + req.body.username + '!')
+            }).then(function(user) {
+                console.log(user)
+                db.UserStats.bulkCreate([
+                    {   
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'math',
+                        userId: parseInt(user.dataValues.id)
+                    }, {
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'history',
+                        userId: parseInt(user.dataValues.id)
+                    }, {
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'physics',
+                        userId: parseInt(user.dataValues.id)
+                    }, {
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'science',
+                        userId: parseInt(user.dataValues.id)
+                    }   
+                ]).then(function() {
+                    res.redirect('/home.html?usr='+user.dataValues.id)
                 })
             })
         } else {
