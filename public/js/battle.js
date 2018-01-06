@@ -47,6 +47,7 @@ var parseUrlforRound = function() {
     return finalUrlArr[2].split('=')[1]
 }
 var level = parseUrlforRound();
+console.log('level var = ' + level);
 
 
 //WILL SET CORRECT CATEGORY TEXT IN GAME
@@ -70,7 +71,7 @@ var enemy = {
             stationary: '/assets/graphics/enemies/dragon/stationaryDragon.gif',
             attack: '/assets/graphics/enemies/dragon/attackDragon.gif',
             hit: '/assets/graphics/enemies/dragon/hitDragon.gif',
-            projectile: './assets/graphics/enemies/dragon/projectileDragon.gif'
+            projectile: '/assets/graphics/enemies/dragon/projectileDragon.gif'
         },
         eyeball: {
             stationary: '/assets/graphics/enemies/eyeball/stationaryEyeball.gif',
