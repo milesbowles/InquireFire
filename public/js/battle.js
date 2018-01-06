@@ -84,22 +84,22 @@ $(document).ready(function() {
         },
         character: {
             dragon: {
-                stationary: '',
-                attack: '',
-                hit: '',
-                projectile: ''
+                stationary: '../assets/graphics/enemies/dragon/stationaryDragon',
+                attack: '../assets/graphics/enemies/dragon/attackDragon',
+                hit: '../assets/graphics/enemies/dragon/hitDragon',
+                projectile: '../assets/graphics/enemies/dragon/projectileDragon'
             },
             eyeball: {
-                stationary: '',
-                attack: '',
-                hit: '',
-                projectile: ''
+                stationary: '../assets/graphics/enemies/eyeball/stationaryEyeball',
+                attack: '../assets/graphics/enemies/eyeball/attackEyeball',
+                hit: '../assets/graphics/enemies/eyeball/hitEyeball',
+                projectile: '../assets/graphics/enemies/eyeball/projectileEyeball'
             },
             knight: {
-                stationary: '',
-                attack: '',
-                hit: '',
-                projectile: ''
+                stationary: '../assets/graphics/enemies/knight/stationaryKnight',
+                attack: '../assets/graphics/enemies/knight/attackKnight',
+                hit: '../assets/graphics/enemies/knight/hitKnight',
+                projectile: '../assets/graphics/enemies/knight/projectileKnight'
             }
 
 
