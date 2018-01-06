@@ -27,7 +27,6 @@ module.exports = function(app){
     });
     // *************************************** Login Authentication + New Account Creation
     app.post("/login", function(req, res) {
-        console.log(req.body)
         if (req.body.hasOwnProperty('username')) {
             db.UserAuth.create({
                 username: req.body.username,
@@ -118,26 +117,27 @@ module.exports = function(app){
             }
         }).then(function(quests) {
             var questObj = {}
-            console.log(quests)
-            questObj.q = quests[parseInt(urlParams[3][1])].dataValues.q
+            var whereIdArray = []
+            for (var i = 1; i < quests.length + 1; i++) {
+                questObj['q'+i] = [quests[i-1].dataValues.id, quests[i-1].dataValues.q]
+                whereIdArray[i-1] = {id: quests[i-1].dataValues.id}
+            }
             db.Choice.findAll({
                 where: {
-                    id: parseInt(quests[parseInt(urlParams[3][1])].dataValues.id)
+                    [db.Sequelize.Op.or]: whereIdArray
                 }
-            }).then(function(choice) {
-                console.log(choice[0].dataValues)
-                questObj.ans = choice[0].dataValues.ans
-                questObj.choices = []
-                for (var i = 1; i < 5; i++) {
-                    var objProp = 'c'+i
-                    console.log(choice[0].dataValues[objProp])
-                    if (choice[0].dataValues[objProp] === questObj.ans) {
-                        questObj.correctIndex = i - 1
-                        questObj.choices[i-1] = choice[0].dataValues[objProp]
-                    } else {
-                        questObj.choices[i-1] = choice[0].dataValues[objProp]
-                    }                 
+            }).then(function(choices) {
+                for (var i = 1; i < choices.length + 1; i++) {
+                    var count = 2
+                    for (var property in choices[i-1].dataValues) {
+                        if (choices[i-1].dataValues.hasOwnProperty(property)) {
+                            console.log(choices[i-1].dataValues[property])
+                            questObj['q'+i][count] = choices[i-1].dataValues[property]
+                            count++
+                        }
+                    }
                 }
+                res.render('questions', {questObj: questObj})
             })
         })
 
