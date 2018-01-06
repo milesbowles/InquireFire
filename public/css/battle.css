@@ -7,13 +7,12 @@
 
 body {
     background-color: #b7f7ff;
-    
 }
 #mainView {
     /* display: flex; */
     /* fix padding */
     padding: 7% 10% 15% 10%;
-    background-image: url('../assets/graphics/backgrounds/cave.png');
+    background-image: url('../assets/graphics/backgrounds/cave.gif');
     background-repeat: repeat-x;
     background-size: 80%;
 }
