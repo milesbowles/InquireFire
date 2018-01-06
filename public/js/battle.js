@@ -108,7 +108,7 @@ $(document).ready(function() {
             switch (level) {
                 case 1:
                 $('#enemy').attr('src', this.character.eyeball.stationary).css();
-                $('#attack').attr('src', this.character.eyeball.placeholder).css();
+                $('#attack').attr('src', '../assets/graphics/placeholder.png').css();
                     break;
                 case 2:
                 
