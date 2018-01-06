@@ -118,6 +118,13 @@ module.exports = function(app){
             res.send(statsArr).status(200)
         })
     });
+    app.get("/api/:userId/:category/:isPerfect", function(req, res) {
+        if (req.params.isPerfect === "true") {
+            res.send('you had a perfect game')
+        } else {
+            res.send('you did not have a perfect game')
+        }
+    })
     app.get("/game/:userAndCategory", function(req, res) {
         var urlParams = req.params.userAndCategory.split('&')
         for (var i = 0; i < urlParams.length; i++) {

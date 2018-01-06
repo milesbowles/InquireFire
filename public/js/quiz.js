@@ -56,7 +56,16 @@
 
         $(document).on('click', '#quiz-finish-btn', function (e) {
           e.preventDefault();
-          window.location.href = "/"
+          var url = window.location.href.split('/')
+          var gameInfo = url[url.length-1]
+          var gameInfo = gameInfo.split('&')
+          var usrId = gameInfo[0].split('=')[1]
+          var category = gameInfo[1].split('=')[1]
+          var perfect = false
+          if (score===9) {
+            perfect = true
+          }
+          window.location.href = "/api/"+usrId+"/"+category+"/"+perfect
           base.methods.finish();
         });
 
