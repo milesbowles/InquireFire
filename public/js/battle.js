@@ -105,16 +105,20 @@ $(document).ready(function() {
 
         },
         stop: function () {
-            setTimeout(function() {
-                $('#enemy-img').attr('src', enemy.state.stationary).css({
-                    'margin-top' : '40%',
-                    'height' : '170%',
-                    'width' : '170%'
-                });
-                $('#controlView').fadeTo('slow', 1);
-                $('#header-label').fadeTo('slow', 1);
-                player.turn();
-            }, 1000);
+            switch (level) {
+                case 1:
+                $('#enemy').attr('src', this.character.eyeball.stationary).css();
+                $('#attack').attr('src', this.character.eyeball.placeholder).css();
+                    break;
+                case 2:
+                
+                    break;
+                case 3:
+            
+                    break;
+                default:
+                    break;
+            };
         },
         attack: function () {
             switch (level) {
@@ -123,15 +127,17 @@ $(document).ready(function() {
                 $('#attack').attr('src', this.character.eyeball.projectile).css();
                     break;
                 case 2:
-                $('#attack').attr('src', this.character.knight.attack).css();
+                
+                    break;
+                case 3:
+            
                     break;
                 default:
                     break;
-            }
-            $('#enemyo').attr('src', this.state.attack);
-            $('#attack').attr('src', this.state.attack);
-            enemy.sfx.attack.play();
-            player.updateHitPoints();
+            };
+
+            // enemy.sfx.attack.play();
+            // player.updateHitPoints();
             enemy.stop();
         },
         updateHitPoints: function () {
