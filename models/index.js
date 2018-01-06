@@ -16,6 +16,8 @@ if (process.env.JAWSDB_URL) {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// var sequelize = new Sequelize('mysql://trwtw9i93eboqhug:jj84l33owta6n77y@d6q8diwwdmy5c9k9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/mh6za6taltkbjelz')
+
 fs
   .readdirSync(__dirname)
   .filter(file => {

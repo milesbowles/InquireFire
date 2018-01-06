@@ -16,11 +16,5 @@ module.exports = function(sequelize, DataTypes){
     },{
         timestamps: false
     });
-    Inquiry.associate = function(models){
-        Inquiry.hasMany(models.Choice, {
-            onDelete: "cascade",
-            onUpdate: "cascade"
-        });
-    };
     return Inquiry;
 };
