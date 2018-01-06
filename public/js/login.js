@@ -1,8 +1,4 @@
 jQuery(document).ready(function($){
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     // ************************************************ The current way we handle a failed login change, subject to change, depending on where/how the error message to user is to be displayed
     var parseUrl = function(url) {
       var urlArr = url.split('?')
