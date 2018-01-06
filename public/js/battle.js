@@ -49,6 +49,15 @@ var parseUrlforRound = function() {
 var level = parseUrlforRound();
 
 
+//WILL SET CORRECT CATEGORY TEXT IN GAME
+var parseUrlforCategory = function() {
+    var initUrlArr = window.location.href.split('/')
+    var finalUrlArr = initUrlArr[initUrlArr.length - 1].split('&')
+    return finalUrlArr[1].split('=')[1]
+}
+var category = parseUrlforCategory()
+document.getElementById("quiz-title").innerHTML = category.toUpperCase()
+
 // Enemy Object
 var enemy = {
     hitPoints: 50,
