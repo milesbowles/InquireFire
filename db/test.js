@@ -36,15 +36,15 @@ function createAnswers(QuestionsAnswers){
         });
     }
 };
-//createQuestions(QuestionsAnswers)
+// createQuestions(QuestionsAnswers);
 
-// createAnswers(QuestionsAnswers);
+createAnswers(QuestionsAnswers);
 
-db.Inquiry.findAll({}).then(function(dbInquiry){
-    for (var i = 0; i < dbInquiry.length; i++){
-        console.log(dbInquiry[i].id + " " + dbInquiry[i].q + " " + dbInquiry[i].round);            
-    }
-});
+// db.Inquiry.findAll({}).then(function(dbInquiry){
+//     for (var i = 0; i < dbInquiry.length; i++){
+//         console.log(dbInquiry[i].id + " " + dbInquiry[i].q + " " + dbInquiry[i].round);            
+//     }
+// });
 
 // db.Choice.findAll({}).then(function(dbChoice){
 //     for (var i = 0; i < dbChoice.length; i++){
