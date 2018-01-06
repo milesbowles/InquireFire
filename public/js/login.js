@@ -12,6 +12,7 @@ jQuery(document).ready(function($){
 
     parseUrl(window.location.href)
     // *************************************************
+
     var $form_modal = $('.user-modal'),
       $form_login = $form_modal.find('#login'),
       $form_signup = $form_modal.find('#signup'),
@@ -137,6 +138,7 @@ jQuery(document).ready(function($){
     //   });
     // }
   
+
   });
   
   

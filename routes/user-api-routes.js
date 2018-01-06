@@ -33,16 +33,36 @@ module.exports = function(app){
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password
-            }).then(function() {
-                db.UserStats.create({
-                    gamesWon: 0,
-                    gamesPlayed: 0,
-                    highScoreMulti: 0,
-                    highScoreSingle: 0,
-                    categoryMulti: null,
-                    categorySingle: null
-                }).then(function() {
-                    res.send('Welcome to the home page ' + req.body.username + '!')
+            }).then(function(user) {
+                console.log(user)
+                db.UserStats.bulkCreate([
+                    {   
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'math',
+                        userId: parseInt(user.dataValues.id)
+                    }, {
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'history',
+                        userId: parseInt(user.dataValues.id)
+                    }, {
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'physics',
+                        userId: parseInt(user.dataValues.id)
+                    }, {
+                        gamesWon: 0,
+                        gamesPlayed: 0,
+                        perfectGames: 0,
+                        category: 'science',
+                        userId: parseInt(user.dataValues.id)
+                    }   
+                ]).then(function() {
+                    res.redirect('/home.html?usr='+user.dataValues.id)
                 })
             })
         } else {
@@ -86,13 +106,40 @@ module.exports = function(app){
             res.send(stringifiedStats).status(200)
         })
     });
-    app.get("/game/:userAndCategory", function(req, res){
+    app.get("/game/:userAndCategory", function(req, res) {
         var urlParams = req.params.userAndCategory.split('&')
         for (var i = 0; i < urlParams.length; i++) {
-            urlParams[i].split('=')
+            urlParams[i] = urlParams[i].split('=')
         }
-        console.log(urlParams)
-        res.send('to send user to game with appropriate questions')
-        // res.render('')
+        db.Inquiry.findAll({
+            where: {
+                subcategory: urlParams[1][1],
+                round: parseInt(urlParams[2][1])
+            }
+        }).then(function(quests) {
+            var questObj = {}
+            console.log(quests)
+            questObj.q = quests[parseInt(urlParams[3][1])].dataValues.q
+            db.Choice.findAll({
+                where: {
+                    id: parseInt(quests[parseInt(urlParams[3][1])].dataValues.id)
+                }
+            }).then(function(choice) {
+                console.log(choice[0].dataValues)
+                questObj.ans = choice[0].dataValues.ans
+                questObj.choices = []
+                for (var i = 1; i < 5; i++) {
+                    var objProp = 'c'+i
+                    console.log(choice[0].dataValues[objProp])
+                    if (choice[0].dataValues[objProp] === questObj.ans) {
+                        questObj.correctIndex = i - 1
+                        questObj.choices[i-1] = choice[0].dataValues[objProp]
+                    } else {
+                        questObj.choices[i-1] = choice[0].dataValues[objProp]
+                    }                 
+                }
+            })
+        })
+
     })
 }

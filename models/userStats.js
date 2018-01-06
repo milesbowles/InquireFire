@@ -14,9 +14,6 @@ module.exports = function(sequelize, DataTypes) {
       },
       perfectGames: {
         type: DataTypes.INTEGER
-      },
-      categorySingle: {
-          type: DataTypes.STRING
       }
     },
     {
