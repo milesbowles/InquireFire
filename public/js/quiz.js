@@ -131,6 +131,7 @@
           if (selected === correct) {
             $answerEl.addClass('correct');
             response = questions[currentQuestionIndex].correctResponse;
+            attackView.engage();
             score++;
           } else {
             $answerEl.addClass('incorrect');
@@ -259,7 +260,7 @@
       finishButtonText: 'Finish',
       restartButtonText: 'Restart'
     };
-  
+
     $.fn.quiz = function(options) {
       return this.each(function() {
         new $.quiz(this, options);

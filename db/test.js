@@ -36,21 +36,21 @@ function createAnswers(QuestionsAnswers){
         });
     }
 };
-// createQuestions(QuestionsAnswers);
+//createQuestions(QuestionsAnswers)
 
 // createAnswers(QuestionsAnswers);
 
-// db.Inquiry.findAll({}).then(function(dbInquiry){
-//     for (var i = 0; i < dbInquiry.length; i++){
-//         console.log(dbInquiry[i].id + " " + dbInquiry[i].q + " " + dbInquiry[i].round);            
-//     }
-// });
-
-db.Choice.findAll({}).then(function(dbChoice){
-    for (var i = 0; i < dbChoice.length; i++){
-        console.log(dbChoice[i].id + " " + dbChoice[i].c1 + ", " + dbChoice[i].c2 + ", " + dbChoice[i].c3 + ", " + dbChoice[i].c4 + "... " + dbChoice[i].ans + " " + dbChoice[i].InquiryId);
+db.Inquiry.findAll({}).then(function(dbInquiry){
+    for (var i = 0; i < dbInquiry.length; i++){
+        console.log(dbInquiry[i].id + " " + dbInquiry[i].q + " " + dbInquiry[i].round);            
     }
 });
+
+// db.Choice.findAll({}).then(function(dbChoice){
+//     for (var i = 0; i < dbChoice.length; i++){
+//         console.log(dbChoice[i].id + " " + dbChoice[i].c1 + ", " + dbChoice[i].c2 + ", " + dbChoice[i].c3 + ", " + dbChoice[i].c4 + "... " + dbChoice[i].ans + " " + dbChoice[i].InquiryId);
+//     }
+// });
 
 // db.Choice.update({
 //     InquiryId: 10

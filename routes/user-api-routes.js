@@ -27,6 +27,7 @@ module.exports = function(app){
     });
     // *************************************** Login Authentication + New Account Creation
     app.post("/login", function(req, res) {
+        console.log(req.body)
         if (req.body.hasOwnProperty('username')) {
             db.UserAuth.create({
                 username: req.body.username,

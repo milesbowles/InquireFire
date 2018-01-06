@@ -4,6 +4,9 @@
     <title>Home</title>
     <meta charset="utf-8">
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -12,7 +15,7 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script src="./js/home.js"></script>
     <!--Custom CSS-->
     <link rel="stylesheet" type="text/css" href="./css/home.css">
 
@@ -21,20 +24,42 @@
 <body>
 
 <div id="about" class="container-fluid">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-transparent" >
-            <div class="panel-body">
-                <!-- Left-aligned -->
-                <div class="media">
-                    <div class="media-left">
-                        <img src="./assets/graphics/characters/wizard/wizard-stationary.gif" class="media-object" style="width:50%; height:50%">
-                    </div>
-                    <br><br><br><br><br><br><br><br><br>
-                </div>
-                <div id="stats">This will be where the stats are!</div>
-            </div>
-        </div>
+    <div class="media-left">
+        <img src="./assets/graphics/characters/wizard/wizard-stationary.gif" class="media-object" style="width:50%; height:50%">
     </div>
+    <div id="progress" > 
+        <table class="container">
+            <thead>
+                <tr>
+                    <th><h1>Categories</h1></th>
+                    <th><h1>Games Played</h1></th>
+                    <th><h1>Games Won</h1></th>
+                    <th><h1>Perfect Games</h1></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chemistry</td>
+                    <td class="chemistry gamesPlayed"></td>
+                    <td class="chemistry gamesWon"></td>
+                    <td class="chemistry perfecGames"></td>
+                </tr>
+                <tr>
+                    <td>History</td>
+                    <td class="history gamesPlayed"></td>
+                    <td class="history gamesWon"></td>
+                    <td class="history perfectGames"></td>
+                </tr>
+                <tr>
+                    <td>Math</td>
+                    <td class="math gamesPlayed"></td>
+                    <td class="math gamesWon"></td>
+                    <td class="math perfectGames"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+    <br><br><br><br><br><br>
 </div>
 
 <div id="categories" class="container-fluid">
@@ -101,6 +126,8 @@
     }
     updateGameLinks()
 </script>
+
+
 
 </body>
 </html>
