@@ -24,7 +24,7 @@ $(document).ready(function() {
     var updateGameLinks = function() {
         var links = document.getElementsByTagName('a')
         for (var i = 0; i < links.length; i++) {
-            links[i].setAttribute('href', '/game/usr='+userId+'&category='+links[i].attributes[0].value+'&round=1'+'&question=0')
+            links[i].setAttribute('href', '/game/usr='+userId+'&category='+links[i].attributes[0].value+'&round=1')
         }
     }
     updateGameLinks()
