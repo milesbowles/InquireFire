@@ -20,14 +20,12 @@ function createQuestions(QuestionsAnswers){
 /**This function will populate the Answers table */
 function createAnswers(QuestionsAnswers){
     for (var i = 0; i < QuestionsAnswers.length; i++){
-        var identification = i + 1;
         db.Choice.create({
             c1: QuestionsAnswers[i].c1,
             c2: QuestionsAnswers[i].c2,
             c3: QuestionsAnswers[i].c3,
             c4: QuestionsAnswers[i].c4,
-            ans: QuestionsAnswers[i].ans,
-            InquiryId: identification
+            ans: QuestionsAnswers[i].ans
         }).then(function(dbChoice){
             console.log("ready");
         });
@@ -36,7 +34,7 @@ function createAnswers(QuestionsAnswers){
         });
     }
 };
-// createQuestions(QuestionsAnswers);
+//createQuestions(QuestionsAnswers);
 
 createAnswers(QuestionsAnswers);
 
