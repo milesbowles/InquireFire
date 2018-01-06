@@ -136,7 +136,7 @@
           $answerEl.addClass('correct');
           response = questions[currentQuestionIndex].correctResponse;
           // player attack
-
+          player.attack();
           score++;
         } else {
           enemy.attack();

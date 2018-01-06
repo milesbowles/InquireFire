@@ -95,6 +95,7 @@ var enemy = {
             case 1:
                 document.getElementById("enemy").src=this.character.eyeball.attack;
                 document.getElementById("attack").src=this.character.eyeball.projectile;
+                player.hit();
                 setTimeout(function() {
                     enemy.stop();
                 }, 1300);
@@ -102,6 +103,7 @@ var enemy = {
             case 2:
                 document.getElementById("enemy").src=this.character.knight.attack;
                 document.getElementById("attack").src=this.character.knight.projectile;
+                player.hit();
                 setTimeout(function() {
                     enemy.stop();
                 }, 1300);
@@ -109,6 +111,35 @@ var enemy = {
             case 3:
                 document.getElementById("enemy").src=this.character.dragon.attack;
                 document.getElementById("attack").src=this.character.dragon.projectile;
+                player.hit();
+                setTimeout(function() {
+                    enemy.stop();
+                }, 1300);
+                break;
+            default:
+                break;
+        };
+
+        // enemy.sfx.attack.play();
+        // player.updateHitPoints();
+        
+    },
+    hit: function () {
+        switch (level) {
+            case 1:
+                document.getElementById("enemy").src=this.character.eyeball.hit;
+                setTimeout(function() {
+                    enemy.stop();
+                }, 1300);
+                break;
+            case 2:
+                document.getElementById("enemy").src=this.character.knight.hit;
+                setTimeout(function() {
+                    enemy.stop();
+                }, 1300);
+                break;
+            case 3:
+                document.getElementById("enemy").src=this.character.dragon.hit;
                 setTimeout(function() {
                     enemy.stop();
                 }, 1300);
@@ -148,4 +179,65 @@ var enemy = {
     // }
 };
 
+// Player Object
+var player = {
+    hitPoints: 50,
+    sfx: {
+        // move: new Audio('Assets/media/sound-effects/ufo-move.wav'),
+        // attack: new Audio('Assets/media/sound-effects/lazer-blast.wav')
+    },
+    state: {
+        stationary: './assets/graphics/characters/wizard/stationaryWizard.gif',
+        attack: './assets/graphics/characters/wizard/attackWizard.gif',
+        hit: './assets/graphics/characters/wizard/hitWizard.gif',
+        projectile: './assets/graphics/characters/wizard/projectileWizard.gif'
+    },
+    stop: function () {
+        document.getElementById("player").src=this.state.stationary;
+        document.getElementById("attack").src='./assets/graphics/placeholder.png';
+    },
+    attack: function () {
+        document.getElementById("player").src=this.state.attack;
+        document.getElementById("attack").src=this.state.projectile;
+        enemy.hit();
+        setTimeout(function() {
+            player.stop();
+        }, 1300);
 
+
+        // enemy.sfx.attack.play();
+        // player.updateHitPoints();
+        
+    },
+    hit: function () {
+        document.getElementById("player").src=this.state.hit;
+        setTimeout(function() {
+            player.stop();
+        }, 1300);
+    }
+    // updateHitPoints: function () {
+    //     var percentage = this.hitPoints.toString() + '%';
+    //     $('#enemy-hit-points').attr('aria-valuenow', this.hitPoints).css('width', percentage).text(this.hitPoints.toString());
+    //     gameover();
+    // },
+    // explode: function () {
+    //     $('#enemy-img').attr('src', 'Assets/media/death/explosion.gif').css({
+    //         'margin-bottom' : '5%',
+    //         'margin-left' : '10%',
+    //         'height' : '120%',
+    //         'width' : '120%'
+    //     });
+    //     explosion_sfx.play();
+    //     gameover_sfx.play();
+    // },
+    // death: function () {
+    //     setTimeout(function() {
+    //         $('#enemy-img').attr('src', 'Assets/media/death/skull.gif').css({
+    //             'margin-top' : '150%',
+    //             'margin-left' : '60%',
+    //             'height' : '40%',
+    //             'width' : '40%'
+    //         });
+    //     }, 1500);
+    // }
+};
