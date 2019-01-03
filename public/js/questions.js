@@ -16,7 +16,6 @@ for (var i = 0; i < initQuestionsArr.length; i++) {
     }
   }
 }
-console.log(parsedQuestionsArr)
 $('#quiz').quiz({
     //resultsScreen: '#results-screen',
     //counter: false,

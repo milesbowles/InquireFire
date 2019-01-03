@@ -13,11 +13,6 @@ div.thumbnail:hover {
     box-shadow: 0px 0px 50px white;
 }
 
-
-span.label {
-    margin: 1%;
-}
-
 #character {
   margin-left: 10%;
   padding-right: 5%; 
@@ -27,12 +22,15 @@ span.label {
 }
 
 #about {
+    /* position: absolute; */
+    top: 0;
     zoom: 90%;
     padding-top: 3%;
-    /* height: 20%; */
+    height: 20%;
     /* background-image: url("../media/background/city-bg.png"); */
     background-size: cover;
     background-position: top;
+    margin-bottom: 20px;
 }
 
 #categories {
@@ -41,7 +39,8 @@ span.label {
     padding-bottom: 20%;
     height: 50%; 
     background-color: rgba(13, 13, 20, 0.8);
-
+    /* position: absolute; 
+    bottom: 0; */
 }
 
 #thumbs {

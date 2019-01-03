@@ -11,12 +11,12 @@ module.exports = function(app){
     });
     app.get("/home", function(req, res){
         /** Handle multiplayer stats */
-        db.UserStats.findAll(
-            {limit: 5},
-            [sequelize.fn('max', sequelize.col('highScoreMulti')), 'DESC']
-        ).then(function(dbUserStats){
-            res.json(dbUserStats);
-        });
+        // db.UserStats.findAll(
+        //     {limit: 5},
+        //     [sequelize.fn('max', sequelize.col('highScoreMulti')), 'DESC']
+        // ).then(function(dbUserStats){
+        //     res.json(dbUserStats);
+        // });
         /** Handle single player stats */
         db.UserStats.findAll(
             {limit: 5},
@@ -33,7 +33,6 @@ module.exports = function(app){
                 email: req.body.email,
                 password: req.body.password
             }).then(function(user) {
-                console.log(user)
                 db.UserStats.bulkCreate([
                     {   
                         gamesWon: 0,
@@ -107,7 +106,6 @@ module.exports = function(app){
                 userId: parseInt(req.params.userId)
             }
         }).then(function(stats) {
-            console.log(stats)
             var statsArr = []
             for (var i = 0; i < stats.length; i++) {
                 statsArr[i] = {}

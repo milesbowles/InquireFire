@@ -34,9 +34,9 @@ function createAnswers(QuestionsAnswers){
         });
     }
 };
-createQuestions(QuestionsAnswers);
+// createQuestions(QuestionsAnswers);
 
-//createAnswers(QuestionsAnswers);
+// createAnswers(QuestionsAnswers);
 
 // db.Inquiry.findAll({}).then(function(dbInquiry){
 //     for (var i = 0; i < dbInquiry.length; i++){

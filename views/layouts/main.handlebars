@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle</title>
 
     <!-- Bootstrap File -->
@@ -19,19 +20,17 @@
     <!-- Overall Bootstrap Grid -->
     <div id="mainView" class="container-fluid">
 
-        <div id="gameView">
+        <div class="row" id="gameView">
 
             <!--quiz view-->
-            <div id="quizView">
-                <div id="quiz">
-                    <div id="quiz-header">
-                        <h1 id="quiz-title">Chemistry</h1> 
-                        <p class="faded">Round 1</p>
+            <div id="quizView" class="row">
+                <div id="quiz" class="row">
+                    <div id="quiz-header" class="row">
+                        <h1 id="quiz-title" class="row">Chemistry</h1> 
+                        <p class="faded row">Round 1</p>
                     </div>
-                    <div id="quiz-start-screen">
-                        <p>
-                            <a href="#" id="quiz-start-btn" class="quiz-button">Start</a>
-                        </p>
+                    <div id="quiz-start-screen" class="row">
+                            <a href="#" id="quiz-start-btn" class="quiz-button col-sm-12">Start</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +39,7 @@
 
 
         <!--battle view-->
-        <div id="battleView">
+        <div id="battleView" class="row">
                 <!-- Player  -->
                 <img id="player" src="/assets/graphics/characters/wizard/stationaryWizard.gif">
                 <!-- Attack  -->
