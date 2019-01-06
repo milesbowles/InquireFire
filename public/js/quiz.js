@@ -6,16 +6,18 @@
     var base = this;
 
     // Access to jQuery version of element
-    base.$el = $(el);
+    base.el = $(el);
 
     // Add a reverse reference to the DOM object
-    base.$el.data('quiz', base);
+    // base.el.data('quiz', base);
+    // base.$el.data('quiz', base);
 
     base.options = $.extend($.quiz.defaultOptions, options);
 
     // Level determines enemy character
     // var level = 1;
 
+    /** Define elements using an easy to use variable in order to more easily call them */
     var questions = base.options.questions,
       numQuestions = questions.length,
       startScreen = base.options.startScreen,
@@ -88,7 +90,7 @@
           quizHtml += '<p class="question">' + question.q + '</p>';
           quizHtml += '<ul class="answers">';
           $.each(question.options, function (index, answer) {
-            quizHtml += '<li><a href="#" data-index="' + index + '">' + answer + '</a></li>';
+            quizHtml += '<li><a href="#" class="col-xs-12" data-index="' + index + '">' + answer + '</a></li>';
           });
           quizHtml += '</ul>';
           quizHtml += '</div>';
@@ -105,13 +107,14 @@
         quizHtml += '<div id="quiz-controls">';
         quizHtml += '<p id="quiz-response"></p>';
         quizHtml += '<div id="quiz-buttons">';
-        quizHtml += '<a href="#" id="quiz-next-btn">' + nextButtonText + '</a>';
+        quizHtml += '<a href="#" id="quiz-next-btn" class="col-xs-12">' + nextButtonText + '</a>';
         quizHtml += '<a href="#" id="quiz-finish-btn">' + finishButtonText + '</a>';
         quizHtml += '<a href="#" id="quiz-restart-btn">' + restartButtonText + '</a>';
         quizHtml += '</div>';
         quizHtml += '</div>';
 
-        base.$el.append(quizHtml).addClass('quiz-container quiz-start-state');
+        // base.$el.append(quizHtml).addClass('quiz-container quiz-start-state');
+        base.el.append(quizHtml).addClass('quiz-container quiz-start-state');
 
         $('#quiz-counter').hide();
         $('.question-container').hide();
@@ -120,7 +123,8 @@
         $('#quiz-controls').hide();
       },
       start: function () {
-        base.$el.removeClass('quiz-start-state').addClass('quiz-questions-state');
+        // base.$el.removeClass('quiz-start-state').addClass('quiz-questions-state');
+        base.el.removeClass('quiz-start-state').addClass('quiz-questions-state');
         $(startScreen).hide();
         $('#quiz-controls').hide();
         $('#quiz-finish-btn').hide();
@@ -202,7 +206,8 @@
           quizHtml += '<p id="quiz-gameover-response"></p>';
           quizHtml += '<p><a href="#" id="quiz-retry-btn">' + restartButtonText + '</a></p>';
           quizHtml += '</div>';
-          base.$el.append(quizHtml);
+          // base.$el.append(quizHtml);
+          base.el.append(quizHtml);
         }
         $('#quiz-gameover-response').html(response);
         $('#quiz-counter').hide();
@@ -211,7 +216,8 @@
         $(gameOverScreen).show();
       },
       finish: function () {
-        base.$el.removeClass('quiz-questions-state').addClass('quiz-results-state');
+        // base.$el.removeClass('quiz-questions-state').addClass('quiz-results-state');
+        base.el.removeClass('quiz-questions-state').addClass('quiz-results-state');
         $('.active-question').hide().removeClass('active-question');
         $('#quiz-counter').hide();
         $('#quiz-response').hide();
@@ -228,7 +234,8 @@
       },
       restart: function () {
         base.methods.reset();
-        base.$el.addClass('quiz-questions-state');
+        // base.$el.addClass('quiz-questions-state');
+        base.el.addClass('quiz-questions-state');
         $('#questions').show();
         $('#quiz-counter').show();
         $('.question-container:first-child').show().addClass('active-question');
@@ -239,7 +246,8 @@
         currentQuestion = 1;
         score = 0;
         $('.answers a').removeClass('correct incorrect');
-        base.$el.removeClass().addClass('quiz-container');
+        // base.$el.removeClass().addClass('quiz-container');
+        base.el.removeClass().addClass('quiz-container');
         $('#quiz-restart-btn').hide();
         $(gameOverScreen).hide();
         $(resultsScreen).hide();
@@ -251,7 +259,8 @@
       },
       home: function () {
         base.methods.reset();
-        base.$el.addClass('quiz-start-state');
+        // base.$el.addClass('quiz-start-state');
+        base.el.addClass('quiz-start-state');
         $(startScreen).show();
 
         if (typeof base.options.homeCallback === 'function') {

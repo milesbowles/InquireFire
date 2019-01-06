@@ -154,7 +154,7 @@ module.exports = function(app){
                     var count = 2
                     for (var property in choices[i-1].dataValues) {
                         if (choices[i-1].dataValues.hasOwnProperty(property)) {
-                            console.log(choices[i-1].dataValues[property])
+                            // console.log(choices[i-1].dataValues[property])
                             questObj['q'+i][count] = choices[i-1].dataValues[property]
                             count++
                         }
