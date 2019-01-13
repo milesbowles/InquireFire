@@ -32,6 +32,13 @@
       score = 0,
       answerLocked = false;
 
+      var url = window.location.href.split('/')
+      var gameInfo = url[url.length-1]
+      var gameInfo = gameInfo.split('&')
+      var usrId = gameInfo[0].split('=')[1]
+      var gamesPlayed = gameInfo[3].split("=")[1];
+      var category = gameInfo[1].split("=")[1];
+
     base.methods = {
       init: function () {
         base.methods.setup();
@@ -58,11 +65,11 @@
 
         $(document).on('click', '#quiz-finish-btn', function (e) {
           e.preventDefault();
-          var url = window.location.href.split('/')
-          var gameInfo = url[url.length-1]
-          var gameInfo = gameInfo.split('&')
-          var usrId = gameInfo[0].split('=')[1]
-          var category = gameInfo[1].split('=')[1]
+          // var url = window.location.href.split('/')
+          // var gameInfo = url[url.length-1]
+          // var gameInfo = gameInfo.split('&')
+          // var usrId = gameInfo[0].split('=')[1]
+          // var category = gameInfo[1].split('=')[1]
           var perfect = false
           if (score===9) {
             perfect = true
@@ -108,7 +115,7 @@
         quizHtml += '<p id="quiz-response"></p>';
         quizHtml += '<div id="quiz-buttons">';
         quizHtml += '<a href="#" id="quiz-next-btn" class="col-xs-12">' + nextButtonText + '</a>';
-        quizHtml += '<a href="#" id="quiz-finish-btn">' + finishButtonText + '</a>';
+        quizHtml += '<a href="#" id="quiz-finish-btn" class="col-xs-12">' + finishButtonText + '</a>';
         quizHtml += '<a href="#" id="quiz-restart-btn">' + restartButtonText + '</a>';
         quizHtml += '</div>';
         quizHtml += '</div>';
@@ -133,6 +140,22 @@
         $('#quiz-counter').show();
         $('.question-container:first-child').show().addClass('active-question');
         base.methods.updateCounter();
+        base.methods.updateNumberOfGamesPlayed();
+      },
+      updateNumberOfGamesPlayed: () => {
+        ++ gamesPlayed;
+        $.ajax({
+          type: "POST",
+          url: "/updateNumberOfGamesPlayed",
+          data: {
+            playerId: usrId,
+            updatedNumberOfGamesPlayed: gamesPlayed,
+            category: category
+          },
+          success: function(req, res){
+            console.log("Everything is in working order");
+          }
+        });
       },
       answerQuestion: function (answerEl) {
         if (answerLocked) {

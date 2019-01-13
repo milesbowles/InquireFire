@@ -9,23 +9,6 @@ module.exports = function(app){
     app.get("/", function(req, res){
         res.sendFile(path.join(__dirname, "../public/login.html"));
     });
-    app.get("/home", function(req, res){
-        /** Handle multiplayer stats */
-        // db.UserStats.findAll(
-        //     {limit: 5},
-        //     [sequelize.fn('max', sequelize.col('highScoreMulti')), 'DESC']
-        // ).then(function(dbUserStats){
-        //     res.json(dbUserStats);
-        // });
-        /** Handle single player stats */
-        db.UserStats.findAll(
-            {limit: 5},
-            [sequelize.fn("max", sequelize. col("highScoreSingle")), "DESC"]
-        ).then(function(dbUserStats){
-            res.json(dbUserStats);
-        });
-    });
-    // *************************************** Login Authentication + New Account Creation
     app.post("/login", function(req, res) {
         if (req.body.hasOwnProperty('username')) {
             db.UserAuth.create({
@@ -99,6 +82,22 @@ module.exports = function(app){
             })
         }
     })
+    app.get("/home", function(req, res){
+        /** Handle multiplayer stats */
+        // db.UserStats.findAll(
+        //     {limit: 5},
+        //     [sequelize.fn('max', sequelize.col('highScoreMulti')), 'DESC']
+        // ).then(function(dbUserStats){
+        //     res.json(dbUserStats);
+        // });
+        /** Handle single player stats */
+        db.UserStats.findAll(
+            {limit: 5},
+            [sequelize.fn("max", sequelize. col("highScoreSingle")), "DESC"]
+        ).then(function(dbUserStats){
+            res.json(dbUserStats);
+        });
+    });
     // **********************************************************************************
     app.get("/api/user/:userId", function(req, res){
         db.UserStats.findAll({
@@ -108,6 +107,7 @@ module.exports = function(app){
         }).then(function(stats) {
             var statsArr = []
             for (var i = 0; i < stats.length; i++) {
+                /** Create an array of objects to store statistics */
                 statsArr[i] = {}
                 statsArr[i].category = stats[i].dataValues.category
                 statsArr[i].gamesPlayed = stats[i].dataValues.gamesPlayed
@@ -116,21 +116,22 @@ module.exports = function(app){
             res.send(statsArr).status(200)
         })
     });
-    app.get("/api/:userId/:category/:isPerfect", function(req, res) {
-        if (req.params.isPerfect === "true") {
-            db.UserStats.update({
-                where: {
-                    [db.Sequelize.Op.and]: [{userId: parseInt(req.params.userId)},{category: req.params.category}]
-                }
-            }).then(function() {
-                res.redirect('/home.html?usr='+req.params.userId)
-            })
-        } else {
-            res.redirect('/home.html?usr='+req.params.userId)
-        }
-    })
-    app.get("/game/:userAndCategory", function(req, res) {
-        var urlParams = req.params.userAndCategory.split('&')
+    // app.get("/api/:userId/:category/:isPerfect", function(req, res) {
+    //     if (req.params.isPerfect === "true") {
+    //         db.UserStats.update({
+    //             where: {
+    //                 [db.Sequelize.Op.and]: [{userId: parseInt(req.params.userId)},{category: req.params.category}]
+    //             }
+    //         }).then(function() {
+    //             res.redirect('/home.html?usr='+req.params.userId)
+    //         })
+    //     } else {
+    //         res.redirect('/home.html?usr='+req.params.userId)
+    //     }
+    // })
+    app.get("/game/:userCategoryRoundTimesplayed", function(req, res) {
+        var urlParams = req.params.userCategoryRoundTimesplayed.split('&')
+        /** urlParams[3][1] contains the amount of times played */
         for (var i = 0; i < urlParams.length; i++) {
             urlParams[i] = urlParams[i].split('=')
         }
@@ -141,10 +142,12 @@ module.exports = function(app){
         }).then(function(quests) {
             var questObj = {}
             var whereIdArray = []
+            /** Tag on the questions into a bundled object */
             for (var i = 1; i < quests.length + 1; i++) {
                 questObj['q'+i] = [quests[i-1].dataValues.id, quests[i-1].dataValues.q]
                 whereIdArray[i-1] = {id: quests[i-1].dataValues.id}
             }
+            // questObj["timesPlayed"] = urlParams[3][1];
             db.Choice.findAll({
                 where: {
                     [db.Sequelize.Op.or]: whereIdArray
@@ -163,5 +166,18 @@ module.exports = function(app){
                 res.render('questions', {questObj: questObj})
             })
         })
+    });
+    app.post("/updateNumberOfGamesPlayed", (req, res) => {
+        console.log(req.body);
+        db.UserStats.update({
+            gamesPlayed: parseInt(req.body.updatedNumberOfGamesPlayed)
+        }, {
+            where: {
+                userId: req.body.playerId,
+                category: req.body.category
+            }
+        }).then(updatedGames => {
+            // console.log(req.body);
+        });
     });
 }
