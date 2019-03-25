@@ -10,7 +10,7 @@ function createQuestions(QuestionsAnswers){
             subcategory: QuestionsAnswers[i].subcategory,
             round: QuestionsAnswers[i].round,
         }).then(function(dbInquiry){
-            console.log("yep");
+            console.log(`Question # ${i + 1} created`);
         });
         db.sequelize.sync().then(function(){
             console.log("ready");
@@ -27,7 +27,7 @@ function createAnswers(QuestionsAnswers){
             c4: QuestionsAnswers[i].c4,
             ans: QuestionsAnswers[i].ans
         }).then(function(dbChoice){
-            console.log("ready");
+            console.log(`Choices for question ${i+1} created`);
         });
         db.sequelize.sync().then(function(){
             console.log("ready");
@@ -43,12 +43,12 @@ function createAnswers(QuestionsAnswers){
 //         console.log(dbInquiry[i].id + " " + dbInquiry[i].q + " " + dbInquiry[i].round);            
 //     }
 // });
-
-// db.Choice.findAll({}).then(function(dbChoice){
-//     for (var i = 0; i < dbChoice.length; i++){
-//         console.log(dbChoice[i].id + " " + dbChoice[i].c1 + ", " + dbChoice[i].c2 + ", " + dbChoice[i].c3 + ", " + dbChoice[i].c4 + "... " + dbChoice[i].ans + " " + dbChoice[i].InquiryId);
-//     }
-// });
+// console.log(db.Inquiry.length);
+db.Choice.findAll({}).then(function(dbChoice){
+    for (var i = 0; i < dbChoice.length; i++){
+        console.log(dbChoice[i].id + " " + dbChoice[i].c1 + ", " + dbChoice[i].c2 + ", " + dbChoice[i].c3 + ", " + dbChoice[i].c4 + "... " + dbChoice[i].ans + " " + dbChoice[i].InquiryId);
+    }
+});
 
 // db.Choice.update({
 //     InquiryId: 10

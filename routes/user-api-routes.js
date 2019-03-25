@@ -1,8 +1,8 @@
-var express = require("express");
-var hBars = require("express-handlebars");
-var path = require("path");
+// var express = require("express");
+// var hBars = require("express-handlebars");
+// var path = require("path");
 var db = require("../models");
-var fs = require("fs"); 
+// var fs = require("fs"); 
 
 module.exports = function(app){
     /** Upon navigation to the home-page */
@@ -21,7 +21,7 @@ module.exports = function(app){
                         gamesWon: 0,
                         gamesPlayed: 0,
                         perfectGames: 0,
-                        category: 'math',
+                        category: 'mathematics',
                         userId: parseInt(user.dataValues.id)
                     }, {
                         gamesWon: 0,
@@ -157,7 +157,6 @@ module.exports = function(app){
                     var count = 2
                     for (var property in choices[i-1].dataValues) {
                         if (choices[i-1].dataValues.hasOwnProperty(property)) {
-                            // console.log(choices[i-1].dataValues[property])
                             questObj['q'+i][count] = choices[i-1].dataValues[property]
                             count++
                         }
@@ -168,7 +167,6 @@ module.exports = function(app){
         })
     });
     app.post("/updateNumberOfGamesPlayed", (req, res) => {
-        console.log(req.body);
         db.UserStats.update({
             gamesPlayed: parseInt(req.body.updatedNumberOfGamesPlayed)
         }, {
@@ -177,7 +175,9 @@ module.exports = function(app){
                 category: req.body.category
             }
         }).then(updatedGames => {
-            // console.log(req.body);
         });
+    });
+    app.get("/goBackHome", (req, res) => {
+        res.redirect("/home.html?");
     });
 }

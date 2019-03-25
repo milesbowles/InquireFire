@@ -7,12 +7,11 @@ $(document).ready(function() {
       var urlArr = url.split('?')
       var searchParams = new URLSearchParams(urlArr[1])
       if (searchParams.has("usr") === true) {
-        userId = searchParams.get('usr')
+        userId = searchParams.get('usr');
         var xhttp = new XMLHttpRequest()
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200)  {
                 var statsObj = JSON.parse(this.responseText)
-                console.log(statsObj);
                 for (var i = 0; i < statsObj.length; i++) {
                     var gamesPlayed = document.getElementsByClassName(statsObj[i].category+' gamesPlayed')
                     var perfectGames = document.getElementsByClassName(statsObj[i].category+' perfectGames')
@@ -20,6 +19,7 @@ $(document).ready(function() {
                     numberOfGamesPlayed.push(statsObj[i].gamesPlayed);
                     perfectGames[0].innerHTML = statsObj[i].perfectGames
                 }
+                console.log(numberOfGamesPlayed);
                 updateGameLinks(userId);
             }
         }
@@ -34,34 +34,6 @@ $(document).ready(function() {
         var links = document.getElementsByTagName('a')
         for (var i = 0; i < links.length; i++) {
             links[i].setAttribute('href', '/game/usr='+userId+'&category='+links[i].attributes[0].value+'&round=1&numberOfGamesPlayed='+numberOfGamesPlayed[i]);
-            console.log(links[i].attributes);
         }
     }
-    // ************************************************************************************************************************
-
-
-    function createInfoGraphics() {
-        
-    }
-
-
-    // TODO: add jquery for hiding and displaying categories
-
-    function showSubCategories() {
-        // display modal
-        
-    }
-
-    function hideSubCategories() {
-        // hide modal
-
-    }
-
-// TODO: add input fields for custom questions
-    
 });
-
-function setup() {
-    getUserStats();
-
-}

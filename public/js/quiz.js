@@ -74,8 +74,10 @@
           if (score===9) {
             perfect = true
           }
-          window.location.href = "/api/"+usrId+"/"+category+"/"+perfect
-          base.methods.finish();
+          currentQuestion = 2;
+          // window.location.href = "/api/"+usrId+"/"+category+"/"+perfect
+          window.location.href=`/home.html?usr=${usrId}`;
+          // base.methods.finish();
         });
 
         $(document).on('click', '#quiz-restart-btn, #quiz-retry-btn', function (e) {
@@ -239,21 +241,28 @@
         $(gameOverScreen).show();
       },
       finish: function () {
+        $.ajax({
+          type: "GET",
+          url: "/goBackHome",
+          success: function(data){
+            console.log("done");
+          }
+        });
         // base.$el.removeClass('quiz-questions-state').addClass('quiz-results-state');
-        base.el.removeClass('quiz-questions-state').addClass('quiz-results-state');
-        $('.active-question').hide().removeClass('active-question');
-        $('#quiz-counter').hide();
-        $('#quiz-response').hide();
-        $('#quiz-finish-btn').hide();
-        $('#quiz-next-btn').hide();
-        $('#quiz-restart-btn').show();
-        $(resultsScreen).show();
-        var resultsStr = base.options.resultsFormat.replace('%score', score).replace('%total', numQuestions);
-        $('#quiz-results').html(resultsStr);
+        // base.el.removeClass('quiz-questions-state').addClass('quiz-results-state');
+        // $('.active-question').hide().removeClass('active-question');
+        // $('#quiz-counter').hide();
+        // $('#quiz-response').hide();
+        // $('#quiz-finish-btn').hide();
+        // $('#quiz-next-btn').hide();
+        // $('#quiz-restart-btn').show();
+        // $(resultsScreen).show();
+        // var resultsStr = base.options.resultsFormat.replace('%score', score).replace('%total', numQuestions);
+        // $('#quiz-results').html(resultsStr);
 
-        if (typeof base.options.finishCallback === 'function') {
-          base.options.finishCallback();
-        }
+        // if (typeof base.options.finishCallback === 'function') {
+        //   base.options.finishCallback();
+        // }
       },
       restart: function () {
         base.methods.reset();
